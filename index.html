@@ -898,7 +898,10 @@ async function submitModal() {
     messenger_val: msgs[0]?.value || '',
     photo_1: finalPhotos[0] || null,
     photo_2: finalPhotos[1] || null,
-    photo_3: finalPhotos[2] || null,
+    photo_3: finalPhotos[2] || null, 
+    photo_4: finalPhotos[3] || null,
+    photo_5: finalPhotos[4] || null,
+    photo_6: finalPhotos[5] || null,
   }).then(id => {
     if (id && cardEl) cardEl.dataset.id = id;
   }).catch(err => console.error('Supabase error:', err));
