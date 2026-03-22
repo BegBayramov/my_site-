@@ -447,7 +447,7 @@
       </div>
       <div class="frow">
         <div class="fgroup" style="grid-column:1/-1;">
-          <label class="flabel">Habarlaşmak üçin <span style="font-weight:400;color:var(--t3)">(birden köp saýlap bolýar)</span></span></label>
+          <label class="flabel" id="form-contact-label">Habarlaşmak üçin <span style="font-weight:400;color:var(--t3)" id="form-hint-span">(birden köp saýlap bolýar)</span></label>
           <div class="messenger-wrap" id="messenger-wrap">
             <div class="msg-row" id="mrow-telegram">
               <div class="msg-row-top">
@@ -1129,7 +1129,7 @@ const LANG = {
     'form-name-ph':   'Murat Annayew',
     'form-phone':     'Telefon belgisi',
     'form-contact':   'Habarlaşmak üçin',
-    'form-hint':      '<span>(birden köp saýlap bolýar)</span>',
+    'form-hint':      '(birden köp saýlap bolýar)',
     'form-country':   'Ýurt',
     'form-country-ph':'— Ýurt saýla —',
     'form-city':      'Şäher',
@@ -1285,8 +1285,13 @@ function setLang(lang) {
   });
 
   // Форма — мессенджер хинт
-  const hint = document.getElementById('form-hint-span');
-  if (hint) hint.textContent = t['form-hint'];
+  const contactLabel = document.getElementById('form-contact-label');
+if (contactLabel) {
+  const hintSpan = document.getElementById('form-hint-span');
+  if (hintSpan) hintSpan.textContent = t['form-hint'];
+  const labelNode = contactLabel.childNodes[0];
+  if (labelNode) labelNode.textContent = t['form-contact'] + ' ';
+}
 
   // Форма — тип работы
   const typeLabel = document.getElementById('form-type-label');
