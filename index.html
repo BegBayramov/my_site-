@@ -1,0 +1,1243 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bildirişler — GurbatTM</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gd: #0a3d2e; --gm: #1a6b4a; --gp: #e1f5ee; --gm2: #c8e8dc;
+    --gold: #c8a84b; --gold-l: #fdf3dc;
+    --cream: #faf8f3; --white: #fff;
+    --t: #111d17; --t2: #4a6358; --t3: #8aa89a;
+    --b: #e2ece7; --sh: rgba(26,107,74,0.07);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'IBM Plex Sans', sans-serif; background: var(--cream); color: var(--t); }
+
+  nav {
+    position: sticky; top: 0; z-index: 200;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 48px; height: 64px;
+    background: rgba(10,61,46,0.97); backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(200,168,75,0.2);
+  }
+  .nav-logo { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: #fff; text-decoration: none; }
+  .nav-logo span { color: var(--gold); }
+  .nav-links { display: flex; gap: 28px; }
+  .nav-links a { font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.65); text-decoration: none; transition: color .2s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--gold); }
+  .btn-add { padding: 8px 18px; border-radius: 6px; background: var(--gold); color: var(--gd); font-size: 13px; font-weight: 700; border: none; cursor: pointer; font-family: inherit; }
+
+  /* PAGE HEADER */
+  .ph { background: var(--gd); padding: 40px 48px 0; }
+  .ph-inner { max-width: 1100px; margin: 0 auto; }
+  .bc { display: flex; gap: 8px; font-size: 12px; color: rgba(255,255,255,0.4); margin-bottom: 14px; }
+  .bc a { color: rgba(255,255,255,0.4); text-decoration: none; }
+  .ph-title { font-family: 'Playfair Display', serif; font-size: 34px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+  .ph-title em { color: var(--gold); font-style: normal; }
+  .ph-sub { font-size: 13px; color: rgba(255,255,255,0.5); margin-bottom: 24px; }
+  .fb { display: flex; gap: 8px; flex-wrap: wrap; padding: 16px 0 0; border-top: 1px solid rgba(255,255,255,0.08); }
+  .fsel { padding: 9px 12px; border-radius: 8px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); color: rgba(255,255,255,0.9); font-size: 13px; font-weight: 500; font-family: inherit; cursor: pointer; outline: none; }
+  .fsel option { background: #0a3d2e; }
+  .fsearch { flex: 1; min-width: 160px; padding: 9px 14px; border-radius: 8px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); color: #fff; font-size: 13px; font-family: inherit; outline: none; }
+  .fsearch::placeholder { color: rgba(255,255,255,0.3); }
+
+  .tabs { background: var(--gd); border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .tabs-inner { max-width: 1100px; margin: 0 auto; padding: 0 48px; display: flex; }
+  .tab { padding: 13px 18px; font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.45); cursor: pointer; border-bottom: 2px solid transparent; transition: all .2s; white-space: nowrap; user-select: none; }
+  .tab:hover { color: rgba(255,255,255,0.8); }
+  .tab.active { color: var(--gold); border-bottom-color: var(--gold); }
+
+  .main { max-width: 1100px; margin: 0 auto; padding: 32px 48px 80px; display: grid; grid-template-columns: 1fr 288px; gap: 24px; align-items: start; }
+  .listings { display: flex; flex-direction: column; gap: 12px; }
+  .res-info { font-size: 13px; color: var(--t2); margin-bottom: 6px; }
+  .res-info strong { color: var(--t); }
+
+  /* CARD */
+  .card { background: #fff; border: 1px solid var(--b); border-radius: 16px; overflow: hidden; transition: all .2s; cursor: pointer; }
+  .card[role="link"] { cursor: pointer; }
+  .card[role="link"]:hover { box-shadow: 0 8px 32px var(--sh); transform: translateY(-2px); border-color: var(--gm2); }
+  .card:hover { box-shadow: 0 8px 32px var(--sh); transform: translateY(-2px); border-color: var(--gm2); }
+  .card.hidden { display: none; }
+
+  .ct { padding: 16px 20px 14px; display: flex; align-items: flex-start; gap: 12px; }
+  .cav { width: 46px; height: 46px; border-radius: 50%; background: var(--gp); font-size: 20px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .ci { flex: 1; min-width: 0; }
+  .cn { font-size: 15px; font-weight: 600; color: var(--t); }
+  .cm { font-size: 12px; color: var(--t3); margin-top: 2px; display: flex; align-items: center; gap: 6px; }
+  .cr { text-align: right; flex-shrink: 0; }
+  .cvbadge { display: inline-flex; align-items: center; gap: 3px; font-size: 10px; padding: 3px 9px; border-radius: 20px; background: #eaf3de; color: #3b6d11; font-weight: 600; }
+
+  /* CATEGORY BAND */
+  .cband { padding: 10px 20px; background: var(--gd); display: flex; align-items: center; justify-content: space-between; }
+  .cband-left { display: flex; align-items: center; gap: 8px; }
+  .cband-icon { font-size: 18px; }
+  .cband-cat { font-size: 13px; font-weight: 600; color: #fff; }
+  .cband-loc { font-size: 12px; color: rgba(255,255,255,0.55); display: flex; align-items: center; gap: 5px; }
+
+  /* DESCRIPTION */
+  .cdesc { padding: 12px 20px; border-top: 1px solid var(--b); font-size: 13px; color: var(--t2); line-height: 1.6; }
+
+  /* DETAILS ROW */
+  .cdetails { padding: 11px 20px; display: flex; gap: 0; border-top: 1px solid var(--b); }
+  .di { flex: 1; padding-right: 12px; border-right: 1px solid var(--b); }
+  .di:first-child { padding-left: 0; }
+  .di:last-child { border-right: none; }
+  .dlbl { font-size: 10px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--t3); margin-bottom: 3px; }
+  .dval { font-size: 13px; font-weight: 500; color: var(--t); }
+
+  /* FOOTER */
+  .cfoot { padding: 12px 20px; border-top: 1px solid var(--b); display: flex; justify-content: space-between; align-items: center; }
+  .cdate { font-size: 11px; color: var(--t3); }
+  .cbtns { display: flex; gap: 7px; }
+  .btn-msg { padding: 8px 14px; border-radius: 7px; font-size: 12px; font-weight: 600; cursor: pointer; font-family: inherit; border: 1px solid var(--b); background: #fff; color: var(--t); transition: all .15s; }
+  .btn-msg:hover { background: var(--gp); border-color: var(--gm2); }
+  .btn-call { padding: 8px 14px; border-radius: 7px; font-size: 12px; font-weight: 600; cursor: pointer; font-family: inherit; border: none; background: var(--gm); color: #fff; transition: background .15s; }
+  .btn-call:hover { background: var(--gd); }
+
+  /* CAT TAG */
+  .ctag { display: inline-flex; align-items: center; gap: 4px; font-size: 11px; padding: 3px 9px; border-radius: 20px; font-weight: 500; }
+  .ctag-blue   { background: #e6f1fb; color: #185fa5; }
+  .ctag-green  { background: var(--gp); color: var(--gm); }
+  .ctag-amber  { background: #faeeda; color: #854f0b; }
+  .ctag-coral  { background: #faece7; color: #993c1d; }
+  .ctag-purple { background: #eeedfe; color: #534ab7; }
+
+  /* SIDEBAR */
+  .sidebar { display: flex; flex-direction: column; gap: 14px; position: sticky; top: 80px; }
+  .sc { background: #fff; border: 1px solid var(--b); border-radius: 16px; overflow: hidden; }
+  .sh { padding: 14px 16px 12px; border-bottom: 1px solid var(--b); font-size: 13px; font-weight: 600; color: var(--t); }
+  .sb { padding: 12px 16px; }
+  .srow { display: flex; justify-content: space-between; align-items: center; padding: 7px 0; border-bottom: 1px solid var(--b); }
+  .srow:last-child { border-bottom: none; }
+  .slbl { font-size: 12px; color: var(--t2); }
+  .sval { font-size: 13px; font-weight: 600; color: var(--t); }
+  .sval.g { color: var(--gm); }
+  .cat-row { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid var(--b); cursor: pointer; }
+  .cat-row:last-child { border-bottom: none; }
+  .cat-row:hover .cat-n { color: var(--gm); }
+  .cat-n { font-size: 13px; font-weight: 500; color: var(--t); }
+  .cat-c { font-size: 11px; padding: 2px 8px; border-radius: 20px; background: var(--gp); color: var(--gm); font-weight: 600; }
+
+  .post-cta { background: var(--gd); border-radius: 16px; padding: 20px 16px; text-align: center; }
+  .cta-ico { font-size: 28px; margin-bottom: 8px; }
+  .cta-title { font-family: 'Playfair Display', serif; font-size: 17px; color: #fff; margin-bottom: 6px; }
+  .cta-sub { font-size: 12px; color: rgba(255,255,255,0.5); line-height: 1.5; margin-bottom: 14px; }
+  .cta-btn { width: 100%; padding: 10px; border-radius: 8px; background: var(--gold); color: var(--gd); font-size: 13px; font-weight: 700; border: none; cursor: pointer; font-family: inherit; }
+
+  /* EMPTY */
+  .empty { display: block; text-align: center; padding: 56px 20px; background: #fff; border: 1px solid var(--b); border-radius: 16px; }
+  .empty-ico { font-size: 36px; margin-bottom: 12px; }
+  .empty-title { font-size: 15px; font-weight: 600; margin-bottom: 6px; }
+  .empty-sub { font-size: 13px; color: var(--t2); }
+
+  /* MODAL */
+  .moverlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 500; align-items: flex-start; justify-content: center; padding: 40px 20px; overflow-y: auto; }
+  .moverlay.open { display: flex; }
+  .mbox { background: #fff; border-radius: 20px; width: 100%; max-width: 520px; font-family: inherit; margin: auto; }
+  .mhead { background: var(--gd); padding: 20px 24px 16px; border-radius: 20px 20px 0 0; display: flex; justify-content: space-between; align-items: center; }
+  .mhead-title { font-family: 'Playfair Display', serif; font-size: 21px; font-weight: 700; color: #fff; }
+  .mhead-title span { color: var(--gold); }
+  .mhead-sub { font-size: 12px; color: rgba(255,255,255,0.45); margin-top: 2px; }
+  .mclose { background: rgba(255,255,255,0.1); border: none; color: #fff; width: 32px; height: 32px; border-radius: 50%; font-size: 20px; cursor: pointer; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .mbody { padding: 22px 24px; display: flex; flex-direction: column; gap: 14px; }
+  .msep { height: 1px; background: var(--b); margin: 2px 0; }
+  .msec-title { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--t3); }
+  .frow { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .fgroup { display: flex; flex-direction: column; gap: 5px; }
+  .fgroup.full { grid-column: 1 / -1; }
+  .flabel { font-size: 12px; font-weight: 600; color: var(--t2); letter-spacing: .04em; }
+  .flabel span { color: #e24b4a; }
+  .finput, .fselect2, .ftextarea {
+    width: 100%; padding: 10px 13px; border-radius: 9px;
+    border: 1.5px solid var(--b); font-size: 14px;
+    font-family: inherit; color: var(--t); outline: none;
+    background: #fff; transition: border-color .2s;
+  }
+  .finput:focus, .fselect2:focus, .ftextarea:focus { border-color: var(--gm); }
+  .ftextarea { resize: vertical; min-height: 90px; line-height: 1.6; }
+  .fselect2 { cursor: pointer; }
+  .msubmit { width: 100%; padding: 13px; border-radius: 10px; background: var(--gm); color: #fff; font-size: 15px; font-weight: 700; border: none; cursor: pointer; font-family: inherit; transition: background .2s; margin-top: 4px; }
+  .msubmit:hover { background: var(--gd); }
+  .mnote { font-size: 11px; color: var(--t3); text-align: center; }
+
+  /* SUCCESS */
+  .soverlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 600; align-items: center; justify-content: center; padding: 20px; }
+  .soverlay.open { display: flex; }
+  .sbox { background: #fff; border-radius: 20px; padding: 44px 32px; text-align: center; max-width: 360px; width: 100%; }
+  .sico { font-size: 50px; margin-bottom: 14px; }
+  .stitle { font-family: 'Playfair Display', serif; font-size: 26px; color: var(--gm); margin-bottom: 8px; }
+  .ssub { font-size: 13px; color: var(--t2); line-height: 1.6; margin-bottom: 22px; }
+  .sbtn { padding: 11px 26px; border-radius: 9px; background: var(--gm); color: #fff; font-size: 14px; font-weight: 600; border: none; cursor: pointer; font-family: inherit; }
+
+  @media (max-width: 860px) {
+    nav { padding: 0 16px; }
+    .nav-links { display: none; }
+    .ph { padding: 28px 20px 0; }
+    .tabs-inner { padding: 0 20px; overflow-x: auto; }
+    .main { grid-template-columns: 1fr; padding: 24px 20px 60px; }
+    .sidebar { position: static; }
+    .frow { grid-template-columns: 1fr; }
+  }
+
+  /* MESSENGER PICKER */
+  .messenger-wrap { display: flex; flex-direction: column; gap: 6px; }
+  .msg-btns { display: flex; gap: 6px; }
+  .msg-btn {
+    display: flex; align-items: center; gap: 5px;
+    padding: 6px 10px; border-radius: 8px;
+    border: 1.5px solid var(--b); background: #fff;
+    font-size: 12px; font-weight: 600; color: var(--t2);
+    cursor: pointer; transition: all .15s; font-family: inherit;
+    white-space: nowrap;
+  }
+  .msg-btn:hover { border-color: var(--gm2); background: var(--gp); color: var(--gm); }
+  .msg-btn.active { border-color: var(--gm); background: var(--gp); color: var(--gm); }
+
+  /* MESSENGER MULTI-ROW */
+  .msg-row { border-radius: 10px; border: 1.5px solid var(--b); background: #fff; transition: border-color .15s; cursor: pointer; overflow: hidden; }
+  .msg-row:hover { border-color: var(--gm2); background: var(--gp); }
+  .msg-row.active { border-color: var(--gm); background: var(--gp); }
+  .msg-row-top { display: flex; align-items: center; gap: 10px; padding: 10px 12px; pointer-events: none; }
+  .msg-row-check { width: 20px; height: 20px; border-radius: 5px; border: 2px solid #ccc; background: #fff; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 12px; color: #fff; transition: all .15s; }
+  .msg-row.active .msg-row-check { background: var(--gm); border-color: var(--gm); }
+  .msg-row.active .msg-row-check::after { content: '✓'; }
+  .msg-row-icon { width: 28px; height: 28px; border-radius: 7px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .msg-row-label { font-size: 13px; font-weight: 600; color: var(--t); flex: 1; }
+  .msg-row-input-wrap { display: none; padding: 0 12px 10px; }
+  .msg-row.active .msg-row-input-wrap { display: block; }
+  .msg-row-input { width: 100%; padding: 8px 10px; border-radius: 7px; border: 1.5px solid var(--gm2); font-size: 13px; font-family: inherit; color: var(--t); outline: none; background: #fff; }
+  .msg-row-input:focus { border-color: var(--gm); }
+
+  /* CARD MESSENGER BADGE */
+  .cmsg { display: inline-flex; align-items: center; gap: 4px; font-size: 11px; padding: 2px 8px; border-radius: 20px; background: var(--gp); color: var(--gm); font-weight: 500; margin-top: 3px; }
+
+  /* CONTACT MODAL */
+  .cmo { display: none; position: fixed; inset: 0; background: rgba(10,30,20,0.55); z-index: 600; align-items: center; justify-content: center; padding: 20px; backdrop-filter: blur(4px); }
+  .cmo.open { display: flex; }
+  .cmo-box { background: #fff; border-radius: 22px; padding: 28px 26px 24px; width: 100%; max-width: 360px; box-shadow: 0 24px 64px rgba(10,61,46,0.2); position: relative; animation: fadeIn .25s ease; }
+  .cmo-close { position: absolute; top: 14px; right: 16px; background: none; border: none; cursor: pointer; font-size: 20px; color: var(--t3); padding: 4px 8px; border-radius: 6px; }
+  .cmo-close:hover { background: var(--gp); }
+  .cmo-title { font-family: 'Playfair Display', serif; font-size: 19px; font-weight: 700; color: var(--t); margin-bottom: 3px; }
+  .cmo-sub { font-size: 13px; color: var(--t3); margin-bottom: 18px; }
+  .cmo-phone { display: flex; align-items: center; justify-content: space-between; background: var(--gp); border: 1px solid var(--gm2); border-radius: 12px; padding: 11px 14px; margin-bottom: 14px; }
+  .cmo-num { font-size: 19px; font-weight: 700; color: var(--gd); letter-spacing: .04em; }
+  .cmo-copy { background: var(--gm); color: #fff; border: none; border-radius: 7px; padding: 5px 11px; font-size: 12px; font-weight: 600; cursor: pointer; font-family: inherit; }
+  .cmo-copy.done { background: #2e7d52; }
+  .cmo-divider { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--t3); margin-bottom: 14px; }
+  .cmo-divider::before, .cmo-divider::after { content:''; flex:1; height:1px; background:var(--b); }
+  .cmo-btns { display: flex; flex-direction: column; gap: 9px; }
+  .cmo-btn { display: flex; align-items: center; gap: 11px; padding: 12px 14px; border-radius: 11px; border: 1px solid var(--b); text-decoration: none; font-family: inherit; font-size: 14px; font-weight: 600; color: var(--t); background: #fff; transition: all .15s; }
+  .cmo-btn:hover { background: var(--gp); border-color: var(--gm2); }
+  .cmo-btn-icon { width: 34px; height: 34px; border-radius: 9px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .cmo-btn-icon svg { width: 18px; height: 18px; fill: #fff; }
+  .cmo-btn-label { flex: 1; }
+  .cmo-btn-name { display: block; font-size: 13px; font-weight: 600; }
+  .cmo-btn-hint { display: block; font-size: 11px; color: var(--t3); margin-top: 1px; }
+
+  @media (max-width: 480px) {
+    .cmo-box { position: fixed; bottom: 0; left: 0; right: 0; border-radius: 22px 22px 0 0; max-width: 100%; }
+  }
+
+  @keyframes fadeIn { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:translateY(0); } }
+
+  .lang-btn { padding:5px 10px; border-radius:6px; font-size:12px; font-weight:600; border:1px solid rgba(255,255,255,0.2); background:transparent; color:rgba(255,255,255,0.6); cursor:pointer; font-family:inherit; transition:all .2s; }
+  .lang-btn.active { background:var(--gold); color:var(--gd); border-color:var(--gold); }
+
+  .photo-upload-wrap { display:flex; flex-direction:column; gap:8px; }
+  .photo-upload-label {
+    display:flex; align-items:center; justify-content:center; gap:8px;
+    padding:28px 16px; border-radius:10px;
+    border:2px dashed var(--b); background:var(--gp);
+    cursor:pointer; transition:all .2s; color:var(--gm);
+    font-size:13px; font-weight:600;
+  }
+  .photo-upload-label:hover { border-color:var(--gm); background:#d0f0e2; }
+  .photo-upload-label input { display:none; }
+  .photo-preview-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:6px; }
+  .photo-thumb { position:relative; border-radius:8px; overflow:hidden; aspect-ratio:1; background:var(--b); }
+  .photo-thumb img { width:100%; height:100%; object-fit:cover; display:block; }
+  .photo-thumb-del {
+    position:absolute; top:3px; right:3px;
+    width:20px; height:20px; border-radius:50%;
+    background:rgba(0,0,0,0.6); color:#fff;
+    border:none; cursor:pointer; font-size:12px;
+    display:flex; align-items:center; justify-content:center; line-height:1;
+  }
+  .card-photos { display:grid; grid-template-columns:repeat(5,1fr); gap:4px; padding:6px 14px; border-top:1px solid var(--b); }
+  .card-photos img { width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:5px; cursor:pointer; transition:opacity .15s; }
+  .card-photos img:hover { opacity:.82; }
+  .card-photo-single { grid-template-columns:1fr; padding:0; }
+  .card-photo-single img { width:100%; max-height:100px; object-fit:cover; border-radius:0; }
+
+  @media (max-width: 900px) {
+    .hero-inner, .filters-row, .tabs-inner, .main { padding-left: 16px !important; padding-right: 16px !important; }
+    .main { grid-template-columns: 1fr; gap: 16px; padding-top: 16px; }
+    .filters-row { grid-template-columns: 1fr 1fr; gap: 10px; }
+    .fsearch { grid-column: 1 / -1; }
+    .tabs-inner { overflow-x: auto; }
+    .tab { padding: 12px 14px; font-size: 13px; }
+    .ct, .cband, .cfoot { padding-left: 14px; padding-right: 14px; }
+    .ct { gap: 10px; }
+    .cdetails { grid-template-columns: 1fr 1fr; padding: 12px 14px; }
+    .btn-call { min-height: 44px; padding: 10px 14px; }
+    .mbox { width: min(100vw - 16px, 720px); max-height: 92vh; border-radius: 18px; }
+    .frow { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 560px) {
+    .filters-row { grid-template-columns: 1fr; }
+    .hero-inner { gap: 12px; }
+    .htitle { font-size: 28px; }
+    .ct { flex-wrap: wrap; }
+    .cr { width: 100%; text-align: left; }
+    .cdetails { grid-template-columns: 1fr; }
+    .cbtns { width: 100%; }
+    .btn-call { width: 100%; }
+    .card-photos { grid-template-columns: repeat(3, 1fr); }
+  }
+
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">Gurbat<span>TM</span></a>
+  <div class="nav-links">
+    <a href="#" class="active" id="nav-listings">Bildirişler</a>
+    
+  </div>
+  <div style="display:flex;gap:4px;margin-right:8px;">
+    <button class="lang-btn active" id="btn-ru" onclick="setLang('ru')">RU</button>
+    <button class="lang-btn" id="btn-tm" onclick="setLang('tm')">TM</button>
+  </div>
+  <button class="btn-add" onclick="openModal()">+ Goşmak</button>
+</nav>
+
+<div class="ph">
+  <div class="ph-inner">
+    <div class="bc"><span style="color:rgba(255,255,255,0.7)">Bildirişler</span></div>
+    <div class="ph-title" id="ph-title"><em>Bildirişler</em></div>
+    <div class="ph-sub" id="ph-sub">Hyzmatlar, kömek, satuw · <span id="found-count">0</span> bildiriş</div>
+    <div class="fb">
+      <select class="fsel" id="f-cat" onchange="applyFilters()">
+        <option value="">Ähli kategoriýalar</option>
+        <option value="perevod">💸 Pul geçirme</option>
+        <option value="pomosh">🤝 Hyzmatlar</option>
+        <option value="prodaja">🛍️ Satuw</option>
+        <option value="rabota">💼 Iş</option>
+        <option value="zhilye">🏠 Ýaşaýyş</option>
+        <option value="avto">🚗 Awtoulag</option>
+      </select>
+      <select class="fsel" id="f-country" onchange="applyFilters()">
+        <option value="">Ähli ýurtlar</option>
+        <option value="RO">🇷🇴 Rumyniýa</option>
+        <option value="DE">🇩🇪 Germaniýa</option>
+        <option value="PL">🇵🇱 Polşa</option>
+        <option value="TR">🇹🇷 Türkiýe</option>
+        <option value="RU">🇷🇺 Rossiýa</option>
+        <option value="US">🇺🇸 ABŞ</option>
+        <option value="AE">🇦🇪 BAE</option>
+        <option value="TM">🇹🇲 Türkmenistan</option>
+      </select>
+      <select class="fsel" id="f-sort" onchange="applyFilters()">
+        <option value="new">Ilki täzeler</option>
+        <option value="old">Ilki köneler</option>
+      </select>
+      <input class="fsearch" type="text" id="f-search" placeholder="🔍 Gözleg..." oninput="applyFilters()">
+    </div>
+  </div>
+</div>
+
+<div class="tabs">
+  <div class="tabs-inner">
+    <div class="tab active" data-tab="all" id="tab-all">Ählisi</div>
+    <div class="tab" data-tab="perevod" id="tab-perevod">💸 Geçirmeler</div>
+    <div class="tab" data-tab="pomosh" id="tab-pomosh">🤝 Hyzmatlar</div>
+    <div class="tab" data-tab="prodaja" id="tab-prodaja">🛍️ Satuw</div>
+    <div class="tab" data-tab="rabota" id="tab-rabota">💼 Iş</div>
+    <div class="tab" data-tab="zhilye" id="tab-zhilye">🏠 Ýaşaýyş</div>
+  </div>
+</div>
+
+<div class="main">
+  <div>
+    <div class="res-info"><strong id="res-num">0</strong> bildiriş tapyldy</div>
+    <div class="listings" id="listings">
+
+      <div class="empty" id="empty">
+        <div class="empty-ico">📢</div>
+        <div class="empty-title">Bildiriş ýok</div>
+        <div class="empty-sub">Ilkinji bol! Mugt bildiriş goy</div>
+        <button class="btn-call" style="margin-top:16px;padding:10px 24px;border-radius:8px;" onclick="openModal()">+ Bildiriş goş</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SIDEBAR -->
+  
+    
+  
+
+<!-- MODAL -->
+<div class="moverlay" id="moverlay">
+  <div class="mbox">
+    <div class="mhead">
+      <div>
+        <div class="mhead-title">Bildiriş <span>goş</span></div>
+      </div>
+      <button class="mclose" onclick="closeModal()">×</button>
+    </div>
+    <div class="mbody">
+
+      <div class="msec-title">Seniň hakda</div>
+      <div class="frow">
+        <div class="fgroup">
+          <label class="flabel">Ady we familiýasy <span>*</span></label>
+          <input class="finput" type="text" id="m-name" placeholder="Murat Annayew">
+        </div>
+        <div class="fgroup">
+          <label class="flabel">Telefon belgisi <span>*</span></label>
+          <input class="finput" type="tel" id="m-phone" placeholder="+40 712 345 678">
+        </div>
+      </div>
+      <div class="frow">
+        <div class="fgroup" style="grid-column:1/-1;">
+          <label class="flabel">Habarlaşmak üçin <span style="font-weight:400;color:var(--t3)">(birden köp saýlap bolýar)</span></label>
+          <div class="messenger-wrap" id="messenger-wrap">
+            <div class="msg-row" id="mrow-telegram">
+              <div class="msg-row-top">
+                <div class="msg-row-check"></div>
+                <div class="msg-row-icon" style="background:#229ED920"><svg viewBox="0 0 24 24" width="18" height="18" fill="#229ED9"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8l-1.68 7.92c-.12.56-.46.7-.93.44l-2.58-1.9-1.24 1.2c-.14.13-.26.24-.52.24l.18-2.62 4.72-4.26c.2-.18-.05-.28-.32-.1L7.6 14.26l-2.52-.79c-.54-.17-.55-.54.12-.8l9.84-3.8c.45-.16.85.11.6.93z"/></svg></div>
+                <span class="msg-row-label">Telegram</span>
+              </div>
+              <div class="msg-row-input-wrap"><input class="msg-row-input" type="text" placeholder="@username" data-msg-id="telegram" data-msg-label="Telegram" data-msg-color="#229ED9"></div>
+            </div>
+            <div class="msg-row" id="mrow-whatsapp">
+              <div class="msg-row-top">
+                <div class="msg-row-check"></div>
+                <div class="msg-row-icon" style="background:#25D36620"><svg viewBox="0 0 24 24" width="18" height="18" fill="#25D366"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.37 5.07L2 22l5.07-1.35A9.95 9.95 0 0012 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm3.98 13.5c-.22.6-1.28 1.16-1.75 1.2-.44.04-.86.2-2.9-.6-2.44-.98-3.98-3.44-4.1-3.6-.12-.17-.97-1.3-.97-2.48 0-1.17.62-1.75.84-2 .22-.23.48-.29.64-.29h.46c.15 0 .35-.06.55.41l.77 1.9c.07.17.03.37-.04.5l-.28.41-.28.35c.07.1.35.54.76.95.55.52 1 .7 1.15.77l.37-.46c.1-.12.3-.27.55-.17l1.88.88c.22.1.35.16.4.25.04.08.04.52-.17 1.07z"/></svg></div>
+                <span class="msg-row-label">WhatsApp</span>
+              </div>
+              <div class="msg-row-input-wrap"><input class="msg-row-input" type="text" placeholder="+40 712 345 678" data-msg-id="whatsapp" data-msg-label="WhatsApp" data-msg-color="#25D366"></div>
+            </div>
+            <div class="msg-row" id="mrow-imo">
+              <div class="msg-row-top">
+                <div class="msg-row-check"></div>
+                <div class="msg-row-icon" style="background:#00BBCC20"><svg viewBox="0 0 24 24" width="18" height="18"><circle cx="12" cy="12" r="10" fill="#00BBCC"/><text x="12" y="16" text-anchor="middle" font-size="8" font-weight="700" fill="white" font-family="Arial">IMO</text></svg></div>
+                <span class="msg-row-label">IMO</span>
+              </div>
+              <div class="msg-row-input-wrap"><input class="msg-row-input" type="text" placeholder="+40 712 345 678" data-msg-id="imo" data-msg-label="IMO" data-msg-color="#00BBCC"></div>
+            </div>
+            <div class="msg-row" id="mrow-viber">
+              <div class="msg-row-top">
+                <div class="msg-row-check"></div>
+                <div class="msg-row-icon" style="background:#7360f220"><svg viewBox="0 0 24 24" width="18" height="18" fill="#7360f2"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm3.5 14.5c-.28.28-.6.5-1 .5-.2 0-.4-.04-.58-.1-1.9-.7-3.5-1.9-4.78-3.5-1.1-1.4-1.86-3-2.2-4.72-.08-.4.06-.82.36-1.1l.7-.7c.4-.4 1.04-.4 1.44 0l1.08 1.08c.4.4.4 1.04 0 1.44l-.36.36c.5 1.1 1.2 2.1 2.1 2.9.8.8 1.8 1.4 2.9 1.8l.36-.36c.4-.4 1.04-.4 1.44 0l1.08 1.08c.4.4.4 1.04 0 1.44l-.54.58z"/></svg></div>
+                <span class="msg-row-label">Viber</span>
+              </div>
+              <div class="msg-row-input-wrap"><input class="msg-row-input" type="text" placeholder="+40 712 345 678" data-msg-id="viber" data-msg-label="Viber" data-msg-color="#7360f2"></div>
+            </div>
+          </div>
+          <input type="hidden" id="m-messenger-app" value="">
+          <input type="hidden" id="m-messenger-val" value="">
+        </div>
+        <div class="fgroup">
+          <label class="flabel">Ýurt <span>*</span></label>
+          <select class="fselect2" id="m-country" onchange="fillModalCities()">
+            <option value="">— Ýurt saýla —</option>
+            <option value="RO">🇷🇴 Rumyniýa</option>
+            <option value="DE">🇩🇪 Germaniýa</option>
+            <option value="PL">🇵🇱 Polşa</option>
+            <option value="TR">🇹🇷 Türkiýe</option>
+            <option value="CZ">🇨🇿 Çehiýa</option>
+            <option value="RU">🇷🇺 Rossiýa</option>
+            <option value="AE">🇦🇪 BAE</option>
+            <option value="US">🇺🇸 ABŞ</option>
+            <option value="TM">🇹🇲 Türkmenistan</option>
+            <option value="KZ">🇰🇿 Gazagystan</option>
+          </select>
+        </div>
+      </div>
+      <div class="frow">
+        <div class="fgroup">
+          <label class="flabel">Şäher <span>*</span></label>
+          <select class="fselect2" id="m-city" >
+            <option value="">— Ilki ýurt saýla —</option>
+          </select>
+        </div>
+        <div class="fgroup">
+          <label class="flabel">Kategoriýa <span>*</span></label>
+          <select class="fselect2" id="m-cat">
+            <option value="">— Saýla —</option>
+            <option>💸 Pul geçirme</option>
+            <option>🤝 Hyzmatlar</option>
+            <option>📄 Resminamalar</option>
+            <option>🛍️ Satuw</option>
+            <option>💼 Iş</option>
+            <option>🏠 Ýaşaýyş</option>
+            <option>🚗 Awtoulag</option>
+            <option>🍽️ Iýmit</option>
+            <option>📦 Başga</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="msep"></div>
+      <div class="msec-title">Bildiriş</div>
+
+      <div class="fgroup full">
+        <label class="flabel">Sözbaşy <span>*</span></label>
+        <input class="finput" type="text" id="m-title" placeholder="Mysal: Rumyniýadan Türkmenistana pul geçirýärin">
+      </div>
+      <div class="fgroup full">
+        <label class="flabel">Beýan <span>*</span></label>
+        <textarea class="ftextarea" id="m-desc" placeholder="Jikme-jik gürrüň ber — näme hödürleýärsiň, şertler, baha..."></textarea>
+      </div>
+      <div class="frow">
+        <div class="fgroup">
+          <label class="flabel">Baha (bar bolsa)</label>
+          <input class="finput" type="text" id="m-price" placeholder="Mysal: 2% ýa-da 50€">
+        </div>
+        <div class="fgroup">
+          <label class="flabel">Iş görnüşi</label>
+          <select class="fselect2">
+            <option>Şahsy</option>
+            <option>Onlaýn</option>
+            <option>Şahsy we Onlaýn</option>
+          </select>
+        </div>
+      </div>
+
+
+      <div class="fgroup full" style="margin-top:2px;">
+        <label class="flabel">Surat (islege görä, max 6)</label>
+        <div class="photo-upload-wrap">
+          <label class="photo-upload-label">
+            <input type="file" id="m-photos" accept="image/*" multiple onchange="previewPhotos(this)">
+            📷 Suratlary saýla
+          </label>
+          <div id="photo-count" style="font-size:12px;color:var(--t2);font-weight:600;">0/6 surat</div>
+          <div class="photo-preview-grid" id="photo-preview"></div>
+        </div>
+      </div>
+
+      <button class="msubmit" onclick="submitModal()">Bildirişi çap et →</button>
+    </div>
+  </div>
+</div>
+
+<!-- SUCCESS -->
+<div class="soverlay" id="soverlay">
+  <div class="sbox">
+    <div class="sico">🎉</div>
+    <div class="stitle">Bildiriş goşuldy!</div>
+    <button class="sbtn" onclick="closeSuccess()">Ajaýyp!</button>
+  </div>
+</div>
+
+<script> 
+const SUPABASE_URL = 'https://ldecpismcefliycbmgjc.supabase.co';
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxkZWNwaXNtY2VmbGl5Y2JtZ2pjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM5MzkzNzQsImV4cCI6MjA4OTUxNTM3NH0.if5a7wZWFsI0Q-XB9kQ3hGV5g_ho9VIrHsIXahT8XuY';
+
+async function saveToSupabase(data) {
+  const res = await fetch(`${SUPABASE_URL}/rest/v1/listings`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'apikey': SUPABASE_KEY,
+      'Authorization': `Bearer ${SUPABASE_KEY}`
+    },
+    body: JSON.stringify(data)
+  });
+  return res.ok;
+}
+
+async function loadFromSupabase() {
+  const res = await fetch(`${SUPABASE_URL}/rest/v1/listings?order=created_at.desc`, {
+    headers: {
+      'apikey': SUPABASE_KEY,
+      'Authorization': `Bearer ${SUPABASE_KEY}`
+    }
+  });
+  return res.ok ? await res.json() : [];
+}
+
+
+const MODAL_CITIES = {
+  RO:["Buharest","Kluž-Napoka","Timişoara","Ýassy","Konstansa","Braşow","Kraýowa"],
+  DE:["Berlin","Münhen","Gamburg","Frankfurt","Köln","Ştutgart","Drezden","Nýurnberg"],
+  PL:["Warşawa","Krakow","Wroçlaw","Gdansk","Poznan","Lodz"],
+  TR:["Stambul","Ankara","Izmir","Antalýa","Bursa","Adana","Trabzon"],
+  CZ:["Praga","Brno","Ostrava"],
+  RU:["Moskwa","Sankt-Peterburg","Kazan","Krasnodar","Astrahan","Ýekaterinburg","Rostow-na-Donu"],
+  AE:["Dubaý","Abu-Dabi","Şarja"],
+  US:["Nýu-Ýork","Los-Anjeles","Çikago","Hýuston","Waşington"],
+  TM:["Aşgabat","Mary","Türkmenabat","Türkmenbaşy","Daşoguz","Balkanabat"],
+  KZ:["Almaты","Astana","Şymkent"],
+};
+
+function fillModalCities() {
+  const code = document.getElementById('m-country').value;
+  const sel  = document.getElementById('m-city');
+  sel.innerHTML = '';
+
+  if (!code || !MODAL_CITIES[code]) {
+    sel.innerHTML = '<option value="">— Ilki ýurt saýla —</option>';
+    return;
+  }
+
+  sel.innerHTML = '<option value="">— Şäher saýla —</option>';
+  MODAL_CITIES[code].forEach(c => {
+    const o = document.createElement('option');
+    o.value = c;
+    o.textContent = c;
+    sel.appendChild(o);
+  });
+}
+
+let activeTab = 'all';
+
+function normalizeCategory(cat) {
+  if (!cat) return 'pomosh';
+  return CAT_KEYS[cat] || cat;
+}
+
+function categoryToIcon(cat) {
+  return CAT_ICONS[cat] || {
+    perevod:'💸', pomosh:'🤝', prodaja:'🛍️', rabota:'💼', zhilye:'🏠'
+  }[normalizeCategory(cat)] || '📦';
+}
+
+function applyFilters() {
+  const cat     = document.getElementById('f-cat').value;
+  const country = document.getElementById('f-country').value;
+  const q       = document.getElementById('f-search').value.toLowerCase().trim();
+  const sort    = document.getElementById('f-sort')?.value || 'new';
+  const wrap    = document.getElementById('listings');
+  const cards   = Array.from(document.querySelectorAll('.card[data-cat]'));
+
+  cards.forEach(card => {
+    const matchCat     = !cat || card.dataset.cat === cat;
+    const matchCountry = !country || card.dataset.country === country;
+    const textContent  = (card.innerText || card.textContent || '').toLowerCase();
+    const matchQ       = !q || (card.dataset.name || '').includes(q) || textContent.includes(q);
+    const matchTab     = activeTab === 'all' || card.dataset.cat === activeTab;
+
+    card.classList.toggle('hidden', !(matchCat && matchCountry && matchQ && matchTab));
+  });
+
+  cards
+    .sort((a, b) => {
+      const ad = Number(a.dataset.ts || a.dataset.date || 0);
+      const bd = Number(b.dataset.ts || b.dataset.date || 0);
+      return sort === 'old' ? ad - bd : bd - ad;
+    })
+    .forEach(card => wrap.appendChild(card));
+
+  updateEmpty();
+}
+
+function setTab(tab) {
+  activeTab = tab;
+  document.querySelectorAll('.tab').forEach(t => {
+    t.classList.toggle('active', t.dataset.tab === tab);
+  });
+  document.getElementById('f-cat').value = tab === 'all' ? '' : tab;
+  applyFilters();
+}
+
+document.querySelectorAll('.tab').forEach(t => {
+  t.addEventListener('click', function() {
+    setTab(this.dataset.tab);
+  });
+});
+
+function openModal() {
+  document.getElementById('moverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  document.getElementById('moverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function selectMsg(btn) {} // legacy stub
+
+function initMessengerRows() {
+  document.querySelectorAll('.msg-row').forEach(function(row) {
+    var newRow = row.cloneNode(true);
+    row.parentNode.replaceChild(newRow, row);
+    newRow.addEventListener('click', function(e) {
+      if (e.target.tagName === 'INPUT') return;
+      var active = newRow.classList.contains('active');
+      if (active) {
+        newRow.classList.remove('active');
+        var inp = newRow.querySelector('input.msg-row-input');
+        if (inp) inp.value = '';
+      } else {
+        newRow.classList.add('active');
+        var inp = newRow.querySelector('input.msg-row-input');
+        if (inp) setTimeout(function(){ inp.focus(); }, 30);
+      }
+    });
+  });
+}
+
+function getSelectedMessengers() {
+  var result = [];
+  var URLS = {
+    telegram: function(v){ return 'https://t.me/' + v.replace('@',''); },
+    whatsapp: function(v){ return 'https://wa.me/' + v.replace(/\D/g,''); },
+    imo:      function(v){ return ''; },
+    viber:    function(v){ return 'viber://chat?number=' + v.replace(/\D/g,''); }
+  };
+  var ICONS = {
+    telegram: '<svg viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>',
+    whatsapp: '<svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>',
+    imo:      '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><text x="12" y="16" text-anchor="middle" font-size="8" font-weight="700" fill="white" font-family="Arial">IMO</text></svg>',
+    viber:    '<svg viewBox="0 0 24 24"><path d="M11.4 0C6.37.017 2.076 2.22.688 6.01-.3 8.684-.045 12.47 1.65 15.07l.058.094-.87 3.82 3.916-.857.093.053c2.463 1.396 5.48 1.684 7.88.759 3.394-1.289 5.618-4.876 5.53-8.85C18.14 5.37 15.265.982 11.4 0m.093 1.736c3.135.66 5.55 4.388 5.625 7.853.074 3.34-1.786 6.378-4.577 7.448-2 .758-4.56.498-6.726-.68l-.347-.2-2.617.573.585-2.568-.208-.32C2.06 12.186 1.82 9 2.66 6.713c1.16-3.185 4.69-4.99 8.833-4.977M8.29 4.677c-.273-.012-.546.063-.75.245-.452.4-.982 1.07-1.13 1.827-.208 1.057.16 2.356 1.12 3.7 1.003 1.406 3.152 3.56 5.72 4.437 1.11.376 2.017.233 2.762-.185.568-.318 1.01-.878 1.128-1.458a.41.41 0 0 0-.208-.43c-.64-.363-1.34-.684-1.987-1.035-.298-.162-.596-.04-.797.162-.256.262-.51.527-.754.8-.142.164-.32.195-.51.12-.92-.37-2.568-1.674-3.32-3.327-.09-.202-.066-.388.086-.54.263-.262.548-.516.787-.797.192-.226.22-.548.063-.82-.32-.555-.63-1.117-.96-1.665a.633.633 0 0 0-.25-.034"/></svg>'
+  };
+  document.querySelectorAll('.msg-row.active').forEach(function(row) {
+    var inp = row.querySelector('input.msg-row-input');
+    if (!inp || !inp.value.trim()) return;
+    var id    = inp.dataset.msgId;
+    var label = inp.dataset.msgLabel;
+    var color = inp.dataset.msgColor;
+    var val   = inp.value.trim();
+    result.push({ id: id, label: label, value: val, color: color, url: (URLS[id] || function(){ return ''; })(val), iconFill: ICONS[id] || '' });
+  });
+  return result;
+}
+
+function resetMessengerForm() {
+  document.querySelectorAll('.msg-row').forEach(function(row) {
+    row.classList.remove('active');
+    var inp = row.querySelector('input.msg-row-input');
+    if (inp) inp.value = '';
+  });
+}
+
+const CAT_ICONS = {
+  '💸 Pul geçirme':'💸',
+  '🤝 Hyzmatlar':'🤝',
+  '📄 Resminamalar':'📄',
+  '🛍️ Satuw':'🛍️',
+  '💼 Iş':'💼',
+  '🏠 Ýaşaýyş':'🏠',
+  '🚗 Awtoulag':'🚗',
+  '🍽️ Iýmit':'🍽️',
+  '📦 Başga':'📦'
+};
+
+const CAT_KEYS = {
+  '💸 Pul geçirme':'perevod',
+  '🤝 Hyzmatlar':'pomosh',
+  '📄 Resminamalar':'pomosh',
+  '🛍️ Satuw':'prodaja',
+  '💼 Iş':'rabota',
+  '🏠 Ýaşaýyş':'zhilye',
+  '🚗 Awtoulag':'prodaja',
+  '🍽️ Iýmit':'pomosh',
+  '📦 Başga':'pomosh'
+};
+
+const COUNTRY_FLAGS = {
+  RO:'🇷🇴', DE:'🇩🇪', PL:'🇵🇱', TR:'🇹🇷', CZ:'🇨🇿',
+  RU:'🇷🇺', AE:'🇦🇪', US:'🇺🇸', TM:'🇹🇲', KZ:'🇰🇿'
+};
+
+function getAvatarColor(name) {
+  const colors = ['#c8e8dc','#e6f1fb','#faece7','#eeedfe','#faeeda','#e0f2f1'];
+  let index = name.charCodeAt(0) % colors.length;
+  return colors[index];
+}
+
+function submitModal() {
+  const name    = document.getElementById('m-name').value.trim();
+  const phone   = document.getElementById('m-phone').value.trim();
+  const country = document.getElementById('m-country').value;
+  const city    = document.getElementById('m-city').value;
+  const cat     = document.getElementById('m-cat').value;
+  const title   = document.getElementById('m-title').value.trim();
+  const desc    = document.getElementById('m-desc').value.trim();
+  const price   = document.getElementById('m-price').value.trim();
+
+  if (!name)    { alert('Adyňy ýaz'); return; }
+  if (!phone)   { alert('Telefon belgisini ýaz'); return; }
+  if (!country) { alert('Ýurt saýla'); return; }
+  if (!city)    { alert('Şäher saýla'); return; }
+  if (!cat)     { alert('Kategoriýa saýla'); return; }
+  if (!title)   { alert('Başlyk ýaz'); return; }
+  if (!desc)    { alert('Beýan ýaz'); return; }
+
+  const msgs    = getSelectedMessengers();
+  const flag    = COUNTRY_FLAGS[country] || '🌍';
+  const catIcon = CAT_ICONS[cat] || '📦';
+  const catKey  = CAT_KEYS[cat] || 'pomosh';
+  const initial = name.charAt(0).toUpperCase();
+  const avatarBg = getAvatarColor(name);
+
+  const msgBadge = msgs.length
+    ? msgs.map(m => `<span class="cmsg">${m.label}: ${m.value}</span>`).join('')
+    : '';
+
+  const priceHtml = price
+    ? `<div class="di"><div class="dlbl">Baha</div><div class="dval" style="color:var(--gm)">${price}</div></div>`
+    : '';
+
+  const msgsEncoded = encodeURIComponent(JSON.stringify(msgs));
+
+  const cardHtml = `
+    <div class="card" data-cat="${catKey}" data-country="${country}" data-name="${name.toLowerCase()}" data-date="0" data-ts="${Date.now()}" data-phone="${phone}" data-msgs="${msgsEncoded}" data-title="${title.replace(/"/g,'&quot;')}" data-desc="${desc.replace(/"/g,'&quot;')}" data-price="${price}" data-city="${city}" data-flag="${flag}" data-caticon="${catIcon}" data-seller="${name.replace(/"/g,'&quot;')}" data-photos="${encodeURIComponent(JSON.stringify(photoDataUrls))}" style="animation:fadeIn .4s ease both" onclick="openCard(this)" role="link">
+      <div class="ct">
+        <div class="cav" style="background:${avatarBg}">${initial}</div>
+        <div class="ci">
+          <div class="cn">${name}</div>
+          <div class="cm">${flag} ${city} · <span style="color:var(--t3)">${phone}</span></div>
+          ${msgBadge}
+        </div>
+        <div class="cr"><div class="cvbadge">✓ Täze</div></div>
+      </div>
+      <div class="cband">
+        <div class="cband-left">
+          <span class="cband-icon">${catIcon}</span>
+          <span class="cband-cat">${title}</span>
+        </div>
+        <div class="cband-loc">${flag} ${city}</div>
+      </div>
+      <div class="cdesc">${desc}</div>
+      ${photoDataUrls.length === 1 ? `<div class="card-photos card-photo-single"><img src="${photoDataUrls[0]}" onclick="this.requestFullscreen?.()"></div>` : photoDataUrls.length > 1 ? `<div class="card-photos">${photoDataUrls.map(u => `<img src="${u}" onclick="this.requestFullscreen?.()"/>`).join('')}</div>` : ''}
+      <div class="cdetails">
+        ${priceHtml}
+        <div class="di"><div class="dlbl">Ýurt</div><div class="dval">${flag} ${city}</div></div>
+        <div class="di"><div class="dlbl">Aragatnaşyk</div><div class="dval">${msgs.length ? msgs.map(m=>m.label).join(', ') : '📞'}</div></div>
+        <div class="di"><div class="dlbl">Görlenler</div><div class="dval">1</div></div>
+      </div>
+      <div class="cfoot">
+        <div class="cdate">📅 ${getTimeLabel(new Date())}</div>
+        <div class="cbtns">
+          <button class="btn-msg" onclick="openCmo(this)">💬 Habarlaşmak</button>
+          <button class="btn-call" onclick="showPhone(this)">📞 Belgini görkez</button>
+        </div>
+      </div>
+    </div>
+  `;
+
+  document.getElementById('listings').insertAdjacentHTML('afterbegin', cardHtml);
+
+  saveToSupabase({
+    name, phone, country, city,
+    category: cat, title, description: desc, price,
+    messengers: JSON.stringify(msgs),
+    messenger_app: msgs[0]?.label || '',
+    messenger_val: msgs[0]?.value || '',
+    photo_1: photoDataUrls[0] || null,
+    photo_2: photoDataUrls[1] || null,
+    photo_3: photoDataUrls[2] || null,
+  }).catch(err => console.error('Supabase error:', err));
+
+  closeModal();
+  photoDataUrls = [];
+  document.getElementById('photo-preview').innerHTML = '';
+  document.getElementById('m-photos').value = '';
+  updatePhotoCounter();
+  ['m-name','m-phone','m-title','m-price','m-desc'].forEach(id => {
+    const el = document.getElementById(id); if (el) el.value = '';
+  });
+  document.getElementById('m-country').selectedIndex = 0;
+  document.getElementById('m-cat').selectedIndex = 0;
+  document.getElementById('m-city').innerHTML = '<option value="">— Ilki ýurt saýla —</option>';
+  resetMessengerForm();
+  updateTabCounts();
+  applyFilters();
+  document.getElementById('soverlay').classList.add('open');
+}
+
+
+function updateTabCounts() {
+  const cards = Array.from(document.querySelectorAll('.card[data-cat]'));
+
+  const counts = {
+    all: cards.length,
+    perevod: 0,
+    pomosh: 0,
+    prodaja: 0,
+    rabota: 0,
+    zhilye: 0
+  };
+
+  cards.forEach(card => {
+    const cat = card.dataset.cat;
+    if (Object.prototype.hasOwnProperty.call(counts, cat)) {
+      counts[cat]++;
+    }
+  });
+
+  const setText = (id, value) => {
+    const el = document.getElementById(id);
+    if (el) el.textContent = value;
+  };
+
+  setText('tc-all', counts.all);
+  setText('tc-perevod', counts.perevod);
+  setText('tc-pomosh', counts.pomosh);
+  setText('tc-prodaja', counts.prodaja);
+  setText('tc-rabota', counts.rabota);
+  setText('tc-zhilye', counts.zhilye);
+}
+
+function updatePreviewCity() {
+  return document.getElementById('m-city')?.value || "";
+}
+
+function closeSuccess() {
+  document.getElementById('soverlay').classList.remove('open');
+}
+
+document.getElementById('moverlay').addEventListener('click', function(e) {
+  if (e.target === this) closeModal();
+});
+
+function getTimeLabel(date) {
+  const now  = new Date();
+  const diff = Math.floor((now - date) / 1000);
+
+  if (diff < 60) return 'ýaňyja';
+  if (diff < 3600) return Math.floor(diff / 60) + ' minut öň';
+  if (diff < 86400) return Math.floor(diff / 3600) + ' sagat öň';
+
+  return date.toLocaleDateString('ru-RU', { day:'numeric', month:'long' });
+}
+
+function updateEmpty() {
+  const allCards = document.querySelectorAll('.card[data-cat]');
+  const visibleCards = document.querySelectorAll('.card[data-cat]:not(.hidden)');
+  const empty = document.getElementById('empty');
+
+  if (empty) {
+    empty.style.display = visibleCards.length === 0 ? 'block' : 'none';
+  }
+
+  const resNum = document.getElementById('res-num');
+  const foundCount = document.getElementById('found-count');
+
+  if (resNum) resNum.textContent = visibleCards.length;
+  if (foundCount) foundCount.textContent = visibleCards.length;
+}
+
+function showPhone(btn) {
+  const card = btn.closest('.card');
+  const phone = card.dataset.phone || '';
+
+  if (!phone) {
+    btn.textContent = '📞 Belgisi ýok';
+    return;
+  }
+
+  btn.textContent = phone;
+  btn.style.background = 'var(--gd)';
+  btn.style.letterSpacing = '0.04em';
+
+  btn.onclick = function() {
+    window.location.href = 'tel:' + phone.replace(/\s/g, '');
+  };
+}
+
+const LANG = {
+  ru: {
+    'ph-title': 'Объявления',
+    'btn-add': '+ Добавить',
+    'empty-title': 'Объявлений пока нет',
+    'empty-sub': 'Будь первым! Добавь своё объявление — бесплатно',
+    'cta-title': 'Добавь объявление',
+    'cta-sub': 'Бесплатно ',
+    'cta-btn': '+ Добавить бесплатно'
+  },
+  tm: {
+    'ph-title': 'Bildirişler',
+    'btn-add': '+ Goşmak',
+    'empty-title': 'Bildiriş ýok',
+    'empty-sub': 'Ilkinji bol! Mugt bildiriş goy',
+    'cta-title': 'Bildiriş goş',
+    'cta-sub': 'Mugt ',
+    'cta-btn': '+ Mugt goş'
+  }
+};
+
+let currentLang = 'tm';
+
+function setLang(lang) {
+  currentLang = lang;
+
+  document.getElementById('btn-ru').classList.toggle('active', lang === 'ru');
+  document.getElementById('btn-tm').classList.toggle('active', lang === 'tm');
+
+  const t = LANG[lang];
+
+  const phEl = document.getElementById('ph-title');
+  if (phEl) phEl.innerHTML = `<em>${t['ph-title']}</em>`;
+
+  const addBtn = document.querySelector('.btn-add');
+  if (addBtn) addBtn.textContent = t['btn-add'];
+
+  const emptyTitle = document.querySelector('.empty-title');
+  const emptySub = document.querySelector('.empty-sub');
+  const ctaTitle = document.querySelector('.cta-title');
+  const ctaSub = document.querySelector('.cta-sub');
+  const ctaBtn = document.querySelector('.cta-btn');
+
+  if (emptyTitle) emptyTitle.textContent = t['empty-title'];
+  if (emptySub) emptySub.textContent = t['empty-sub'];
+  if (ctaTitle) ctaTitle.textContent = t['cta-title'];
+  if (ctaSub) ctaSub.textContent = t['cta-sub'];
+  if (ctaBtn) ctaBtn.textContent = t['cta-btn'];
+}
+
+async function initListings() {
+  const wrap = document.getElementById('listings');
+
+  // ── Показать кэш мгновенно ──────────────────────────────────
+  const CACHE_KEY = 'gurbat_listings_cache';
+  try {
+    const cached = localStorage.getItem(CACHE_KEY);
+    if (cached) {
+      const rows = JSON.parse(cached);
+      renderRows(rows, wrap);
+      updateTabCounts();
+      applyFilters();
+    }
+  } catch(e) {}
+
+  // ── Загрузить свежие данные в фоне ─────────────────────────
+  const rows = await loadFromSupabase();
+
+  // Сохранить в кэш (без base64 фото чтобы не переполнить)
+  try {
+    const toCache = rows.map(r => ({...r, photo_1: null, photo_2: null, photo_3: null}));
+    localStorage.setItem(CACHE_KEY, JSON.stringify(toCache));
+  } catch(e) {}
+
+  // Перерисовать с актуальными данными
+  wrap.querySelectorAll('.card[data-cat]').forEach(c => c.remove());
+  renderRows(rows, wrap);
+  updateTabCounts();
+  applyFilters();
+}
+
+function renderRows(rows, wrap) {
+  rows.forEach(r => {
+    const flag = COUNTRY_FLAGS[r.country] || '🌍';
+    const icon = categoryToIcon(r.category);
+    const catKey = normalizeCategory(r.category);
+    const initial = (r.name||'?').charAt(0).toUpperCase();
+    const photos = [r.photo_1,r.photo_2,r.photo_3].filter(Boolean);
+    const photoHtml = photos.length === 1
+      ? `<div class="card-photos card-photo-single"><img src="${photos[0]}"></div>`
+      : photos.length > 1
+      ? `<div class="card-photos">${photos.map(p=>`<img src="${p}">`).join('')}</div>`
+      : '';
+    const msgBadge = r.messenger_val
+      ? `<span class="cmsg">💬 ${r.messenger_app}: ${r.messenger_val}</span>` : '';
+    const ts = r.created_at ? new Date(r.created_at).getTime() : 0;
+
+    wrap.insertAdjacentHTML('beforeend', `
+      <div class="card" data-cat="${catKey}" data-country="${r.country||''}" data-name="${(r.name||'').toLowerCase()} ${(r.title||'').toLowerCase()} ${(r.description||'').toLowerCase()} ${(r.city||'').toLowerCase()}" data-date="${ts}" data-ts="${ts}" data-phone="${r.phone||''}" data-msgs="${encodeURIComponent(JSON.stringify(r.messengers ? (typeof r.messengers==='string'?JSON.parse(r.messengers):r.messengers) : (r.messenger_app ? [{id:'',label:r.messenger_app,value:r.messenger_val||'',color:'#1a6b4a',url:'',iconFill:''}] : [])))}" data-title="${(r.title||'').replace(/"/g,'&quot;')}" data-desc="${(r.description||'').replace(/"/g,'&quot;')}" data-price="${r.price||''}" data-city="${r.city||''}" data-flag="${COUNTRY_FLAGS[r.country]||'🌍'}" data-caticon="${icon}" data-seller="${(r.name||'').replace(/"/g,'&quot;')}" data-photos="${encodeURIComponent(JSON.stringify(photos))}" onclick="openCard(this)" role="link">
+        <div class="ct">
+          <div class="cav" style="background:${getAvatarColor(r.name||'A')}">${initial}</div>
+          <div class="ci">
+            <div class="cn">${r.name || ''}</div>
+            <div class="cm">${flag} ${r.city || ''} · <span style="color:var(--t3)">${r.phone || ''}</span></div>
+            ${msgBadge}
+          </div>
+          <div class="cr"><div class="cvbadge">✓ Barlandy</div></div>
+        </div>
+        <div class="cband">
+          <div class="cband-left"><span class="cband-icon">${icon}</span><span class="cband-cat">${r.title || ''}</span></div>
+          <div class="cband-loc">${flag} ${r.city || ''}</div>
+        </div>
+        <div class="cdesc">${r.description || ''}</div>
+        ${photoHtml}
+        <div class="cdetails">
+          ${r.price ? `<div class="di"><div class="dlbl">Baha</div><div class="dval" style="color:var(--gm)">${r.price}</div></div>` : ''}
+          <div class="di"><div class="dlbl">Ýurt</div><div class="dval">${flag} ${r.city || ''}</div></div>
+          <div class="di"><div class="dlbl">Aragatnaşyk</div><div class="dval">${r.messenger_app||''}</div></div>
+        </div>
+        <div class="cfoot">
+          <div class="cdate">📅 ${r.created_at ? new Date(r.created_at).toLocaleDateString('ru-RU',{day:'numeric',month:'long'}) : ''}</div>
+          <div class="cbtns">
+            <button class="btn-msg" onclick="openCmo(this)">💬 Habarlaşmak</button>
+            <button class="btn-call" onclick="showPhone(this)">📞 Belgini görkez</button>
+          </div>
+        </div>
+      </div>`);
+  });
+}
+
+
+// ── OPEN AD PAGE ──
+function openCard(card) {
+  if (event.target.closest('button') || event.target.closest('a')) return;
+  // Save all data to sessionStorage — avoids huge URL with base64 photos
+  const data = {
+    phone:   card.dataset.phone   || '',
+    msgs:    card.dataset.msgs    || '',
+    title:   card.querySelector('.cband-cat')?.textContent || card.dataset.title   || '',
+    desc:    card.querySelector('.cdesc')?.textContent     || card.dataset.desc    || '',
+    price:   card.dataset.price   || '',
+    city:    card.dataset.city    || '',
+    seller:  card.querySelector('.cn')?.textContent        || card.dataset.seller  || '',
+    photos:  card.dataset.photos  || '',
+    cat:     card.dataset.cat     || '',
+    caticon: card.dataset.caticon || '',
+    flag:    card.dataset.flag    || '',
+  };
+  sessionStorage.setItem('adData', JSON.stringify(data));
+  window.location.href = 'ad.html';
+}
+
+// ── CONTACT MODAL FUNCTIONS ──
+var _cmoPhone = '';
+function openCmo(btn) {
+  var card = btn.closest('.card');
+  var phone = card.dataset.phone || '';
+  var name  = (card.querySelector('.cn') || {}).textContent || '';
+  var title = (card.querySelector('.cband-cat') || {}).textContent || '';
+  _cmoPhone = phone;
+  document.getElementById('cmo-title').textContent = name || 'Satyjy bilen habarlaş';
+  document.getElementById('cmo-sub').textContent = title;
+  document.getElementById('cmo-phone-num').textContent = phone;
+  var msgs = [];
+  try { if (card.dataset.msgs) msgs = JSON.parse(decodeURIComponent(card.dataset.msgs)); } catch(e) {}
+  var btnsEl = document.getElementById('cmo-btns');
+  var divider = document.getElementById('cmo-divider');
+  btnsEl.innerHTML = '';
+  if (msgs.length === 0) {
+    divider.style.display = 'none';
+  } else {
+    divider.style.display = '';
+    msgs.forEach(function(m) {
+      var a = document.createElement('a');
+      a.className = 'cmo-btn';
+      a.href = m.url || '#';
+      if (m.url) a.target = '_blank';
+      a.innerHTML = '<span class="cmo-btn-icon" style="background:' + m.color + '">' + (m.iconFill || '') + '</span>'
+        + '<span class="cmo-btn-label"><span class="cmo-btn-name">' + m.label + '</span><span class="cmo-btn-hint">' + m.value + '</span></span>'
+        + '<span style="color:var(--t3);margin-left:auto;">→</span>';
+      btnsEl.appendChild(a);
+    });
+  }
+  var copyBtn = document.getElementById('cmo-copy-btn');
+  copyBtn.textContent = 'Göçür'; copyBtn.classList.remove('done');
+  document.getElementById('cmo').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeCmo() {
+  document.getElementById('cmo').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function cmoCopy() {
+  navigator.clipboard.writeText(_cmoPhone).catch(function(){});
+  var btn = document.getElementById('cmo-copy-btn');
+  btn.textContent = '✓ Göçürildi'; btn.classList.add('done');
+  setTimeout(function(){ btn.textContent = 'Göçür'; btn.classList.remove('done'); }, 2000);
+}
+document.addEventListener('click', function(e) {
+  var cmo = document.getElementById('cmo');
+  if (e.target === cmo) closeCmo();
+});
+
+function openModal() {
+  document.getElementById('moverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  initMessengerRows();
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  setLang('tm');
+  updatePhotoCounter();
+  initMessengerRows();
+  initListings();
+});
+
+const MAX_PHOTOS = 6;
+let photoDataUrls = [];
+
+function updatePhotoCounter() {
+  const counter = document.getElementById('photo-count');
+  if (counter) counter.textContent = `${photoDataUrls.length}/${MAX_PHOTOS} surat`;
+}
+
+function renderPhotoPreview() {
+  const grid = document.getElementById('photo-preview');
+  grid.innerHTML = '';
+
+  photoDataUrls.forEach((url, i) => {
+    const thumb = document.createElement('div');
+    thumb.className = 'photo-thumb';
+    thumb.innerHTML = `<img src="${url}"><button class="photo-thumb-del" type="button" onclick="removePhoto(${i})">×</button>`;
+    grid.appendChild(thumb);
+  });
+
+  updatePhotoCounter();
+}
+
+function previewPhotos(input) {
+  const files = Array.from(input.files);
+
+  if (!files.length) return;
+
+  const remaining = MAX_PHOTOS - photoDataUrls.length;
+  if (remaining <= 0) {
+    alert(`Diňe ${MAX_PHOTOS} surat goşup bolýar`);
+    input.value = '';
+    return;
+  }
+
+  const filesToAdd = files.slice(0, remaining);
+
+  if (files.length > remaining) {
+    alert(`Diňe ${MAX_PHOTOS} surat goşup bolýar`);
+  }
+
+  let loaded = 0;
+  filesToAdd.forEach(file => {
+    const reader = new FileReader();
+    reader.onload = e => {
+      photoDataUrls.push(e.target.result);
+      loaded++;
+      if (loaded === filesToAdd.length) renderPhotoPreview();
+    };
+    reader.readAsDataURL(file);
+  });
+
+  input.value = '';
+}
+
+function removePhoto(i) {
+  photoDataUrls.splice(i, 1);
+  renderPhotoPreview();
+}
+
+</script>
+
+<!-- CONTACT MODAL -->
+<div class="cmo" id="cmo">
+  <div class="cmo-box">
+    <button class="cmo-close" onclick="closeCmo()">✕</button>
+    <div class="cmo-title" id="cmo-title">Satyjy bilen habarlaş</div>
+    <div class="cmo-sub" id="cmo-sub"></div>
+    <div class="cmo-phone">
+      <div class="cmo-num" id="cmo-phone-num"></div>
+      <button class="cmo-copy" id="cmo-copy-btn" onclick="cmoCopy()">Göçür</button>
+    </div>
+    <div class="cmo-divider" id="cmo-divider">ýa-da messenjer arkaly</div>
+    <div class="cmo-btns" id="cmo-btns"></div>
+  </div>
+</div>
+
+</body>
+</html>
