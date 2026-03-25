@@ -364,13 +364,15 @@
     <div class="ph-sub" id="ph-sub"><span id="ph-sub-text">Hyzmatlar, kömek, satuw</span> · <span id="found-count">0</span> <span id="ph-found-word">bildiriş tapyldy</span></div>
     <div class="fb">
       <select class="fsel" id="f-cat" onchange="applyFilters()">
-        <option value="">Ähli kategoriýalar</option>
-        <option value="perevod">💸 Pul geçirme</option>
-        <option value="pomosh">🤝 Hyzmatlar</option>
-        <option value="prodaja">🛍️ Satuw</option>
-        <option value="rabota">💼 Iş</option>
-        <option value="zhilye">🏠 Ýaşaýyş</option>
-        <option value="avto">🚗 Awtoulag</option>
+        <option value="gecirme">💸 Pul geçirme</option>
+        <option value="hyzmat">🤝 Hyzmatlar</option>
+        <option value="satuw">🛍️ Satuw</option>
+        <option value="is">💼 Iş</option>
+        <option value="yasayys">🏠 Ýaşaýyş</option>
+        <option value="awtoulag">🚗 Awtoulag</option>
+        <option value="resminama">📄 Resminamalar</option> 
+        <option value="iymit">🍽️ Iýmit</option>            
+        <option value="basga">📦 Başga</option>
       </select>
       <select class="fsel" id="f-country" onchange="applyFilters()">
         <option value="">Ähli ýurtlar</option>
@@ -394,16 +396,15 @@
 
 <div class="tabs">
   <div class="tabs-inner">
-    <div class="tab active" data-tab="all" id="tab-all">Ählisi</div>
-    <div class="tab" data-tab="perevod" id="tab-perevod">💸 Geçirmeler</div>
-    <div class="tab" data-tab="pomosh" id="tab-pomosh">🤝 Hyzmatlar</div>
-    <div class="tab" data-tab="prodaja" id="tab-prodaja">🛍️ Satuw</div>
-    <div class="tab" data-tab="rabota" id="tab-rabota">💼 Iş</div>
-    <div class="tab" data-tab="zhilye" id="tab-zhilye">🏠 Ýaşaýyş</div> 
-    <div class="tab" data-tab="resminama" id="tab-resminama">📄 Resminamalar</div>
-    <div class="tab" data-tab="awtoulag" id="tab-awtoulag">🚗 Awtoulag</div>
-    <div class="tab" data-tab="iymit" id="tab-iymit">🍽️ Iýmit</div>
-    <div class="tab" data-tab="basga" id="tab-basga">📦 Başga</div>
+    <div class="tab" data-tab="gecirme"    id="tab-gecirme">
+    <div class="tab" data-tab="hyzmat"     id="tab-hyzmat">
+    <div class="tab" data-tab="satuw"      id="tab-satuw">
+    <div class="tab" data-tab="is"         id="tab-is">
+    <div class="tab" data-tab="yasayys"    id="tab-yasayys">
+    <div class="tab" data-tab="awtoulag"   id="tab-awtoulag">   
+    <div class="tab" data-tab="resminama"  id="tab-resminama">  
+    <div class="tab" data-tab="iymit"      id="tab-iymit">      
+    <div class="tab" data-tab="basga"      id="tab-basga"> 
   </div>
 </div>
 
@@ -782,15 +783,15 @@ const CAT_ICONS = {
 };
 
 const CAT_KEYS = {
-  '💸 Pul geçirme':'pul geçirme ',
-  '🤝 Hyzmatlar':'hyzmatlar',
-  '📄 Resminamalar':'resminamalar',
+  '💸 Pul geçirme':'gecirme',
+  '🤝 Hyzmatlar':'hyzmat',
+  '📄 Resminamalar':'resminama',
   '🛍️ Satuw':'satuw',
-  '💼 Iş':'iş',
-  '🏠 Ýaşaýyş':'ýaşaýyş',
+  '💼 Iş':'is',
+  '🏠 Ýaşaýyş':'yasayys',
   '🚗 Awtoulag':'awtoulag',
-  '🍽️ Iýmit':'iýmit',
-  '📦 Başga':'başga'
+  '🍽️ Iýmit':'iymit',
+  '📦 Başga':'basga'
 };
 
 const COUNTRY_FLAGS = {
