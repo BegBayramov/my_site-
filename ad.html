@@ -316,7 +316,7 @@ async function init() {
           desc: r.description||'', price: r.price||'',
           city: r.city||'', seller: r.name||'',
           flag: COUNTRY_FLAGS[r.country]||'🌍',
-          caticon: CAT_ICONS[r.category]||'📦',
+          CAT_ICONS[r.category] || (r.category.match(/\p{Emoji_Presentation}/u) || ['📦'])[0],
           cat: r.category||'',
           msgs: encodeURIComponent(JSON.stringify(msgs)),
           photos: encodeURIComponent(JSON.stringify(photos)),
