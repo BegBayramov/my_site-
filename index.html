@@ -827,7 +827,8 @@ async function submitModal() {
   if (!desc)    { alert(LANG[currentLang]['alert-desc']); return; }
 
   const msgs    = getSelectedMessengers();
-  const flag    = COUNTRY_FLAGS[country] || '🌍';
+  const flag    = COUNTRY_FLAGS[country] || '🌍'; 
+  const cleanCat = cat.replace(/^[^\s]+\s/, ''); // emoji ayyryar
   const catIcon = CAT_ICONS[cat] || '📦';
   const catKey  = CAT_KEYS[cat] || 'pomosh';
   const initial = name.charAt(0).toUpperCase();
