@@ -358,7 +358,7 @@ function render(d) {
   if (price) document.getElementById('adPrice').textContent = price;
   const meta = document.getElementById('adMeta');
   if (city) meta.innerHTML += `<div class="meta-chip">${flag} ${city}</div>`;
-  if (cat)  meta.innerHTML += `<div class="meta-chip">${caticon} ${cat}</div>`;
+  if (cat)  meta.innerHTML += `<div class="meta-chip">${caticon} ${cat.replace(/\p{Emoji_Presentation}\s*/gu, '').trim()}</div>`;
 
   // Photos
   const grid = document.getElementById('photoGrid');
