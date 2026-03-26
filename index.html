@@ -858,7 +858,7 @@ async function submitModal() {
       <div class="cband">
         <div class="cband-left">
           <span class="cband-icon">${catIcon}</span>
-          <span class="cband-cat">${title}</span>
+          <span class="cband-cat">${title.replace(/\p{Emoji_Presentation}\s*/gu, '').trim()}</span>
         </div>
         <div class="cband-loc">${flag} ${city}</div>
       </div>
