@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Termeni și condiții — GurbatTM</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gd: #0a3d2e; --gm: #1a6b4a; --gp: #e1f5ee; --gm2: #c8e8dc;
+    --gold: #c8a84b; --cream: #faf8f3;
+    --t: #111d17; --t2: #4a6358; --t3: #8aa89a; --b: #e2ece7;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'IBM Plex Sans', sans-serif; background: var(--cream); color: var(--t); }
+
+  nav {
+    position: sticky; top: 0; z-index: 200;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 48px; height: 64px;
+    background: rgba(10,61,46,0.97); backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(200,168,75,0.2);
+  }
+  .nav-logo { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: #fff; text-decoration: none; }
+  .nav-logo span { color: var(--gold); }
+  .back-link { font-size: 13px; color: rgba(255,255,255,0.65); text-decoration: none; transition: color .2s; }
+  .back-link:hover { color: var(--gold); }
+
+  .ph { background: var(--gd); padding: 40px 48px 32px; }
+  .ph-inner { max-width: 800px; margin: 0 auto; }
+  .ph-title { font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 700; color: #fff; margin-bottom: 6px; }
+  .ph-title em { color: var(--gold); font-style: normal; }
+  .ph-sub { font-size: 13px; color: rgba(255,255,255,0.45); }
+
+  .lang-tabs { display: flex; gap: 8px; padding: 20px 48px 0; max-width: 896px; margin: 0 auto; }
+  .lang-tab { padding: 8px 18px; border-radius: 8px 8px 0 0; font-size: 13px; font-weight: 600; cursor: pointer; border: none; background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.5); font-family: inherit; transition: all .2s; }
+  .lang-tab.active { background: var(--cream); color: var(--gd); }
+
+  .content { max-width: 800px; margin: 0 auto; padding: 40px 48px 80px; }
+  .lang-section { display: none; }
+  .lang-section.active { display: block; }
+
+  h2 { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 600; color: var(--gd); margin: 28px 0 10px; }
+  h2:first-child { margin-top: 0; }
+  p { font-size: 15px; line-height: 1.75; color: var(--t2); margin-bottom: 12px; }
+  ul { padding-left: 20px; margin-bottom: 12px; }
+  li { font-size: 15px; line-height: 1.75; color: var(--t2); margin-bottom: 4px; }
+  .updated { font-size: 12px; color: var(--t3); margin-bottom: 28px; padding-bottom: 20px; border-bottom: 1px solid var(--b); }
+  a { color: var(--gm); }
+
+  footer {
+    background: var(--gd); padding: 24px 48px;
+    display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+    border-top: 1px solid rgba(200,168,75,0.15);
+  }
+  .footer-logo { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; color: #fff; text-decoration: none; }
+  .footer-logo span { color: var(--gold); }
+  .footer-links { display: flex; gap: 20px; flex-wrap: wrap; }
+  .footer-links a { font-size: 12px; color: rgba(255,255,255,0.45); text-decoration: none; transition: color .2s; }
+  .footer-links a:hover { color: var(--gold); }
+  .footer-copy { font-size: 12px; color: rgba(255,255,255,0.25); width: 100%; }
+
+  @media (max-width: 768px) {
+    nav { padding: 0 16px; }
+    .ph { padding: 28px 20px 24px; }
+    .lang-tabs { padding: 16px 20px 0; }
+    .content { padding: 28px 20px 60px; }
+    footer { padding: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">Gurbat<span>TM</span></a>
+  <a class="back-link" href="index.html">← Înapoi / Назад</a>
+</nav>
+
+<div class="ph">
+  <div class="ph-inner">
+    <div class="ph-title">Termeni și <em>condiții</em></div>
+    <div class="ph-sub">Условия использования / Ulanmak şertleri</div>
+  </div>
+  <div class="lang-tabs">
+    <button class="lang-tab active" onclick="showLang('ro')">🇷🇴 Română</button>
+    <button class="lang-tab" onclick="showLang('ru')">🇷🇺 Русский</button>
+    <button class="lang-tab" onclick="showLang('tm')">🇹🇲 Türkmen</button>
+  </div>
+</div>
+
+<div class="content">
+
+  <!-- ROMÂNĂ -->
+  <div class="lang-section active" id="sec-ro">
+    <p class="updated">Ultima actualizare: ianuarie 2025</p>
+
+    <h2>1. Acceptarea termenilor</h2>
+    <p>Prin utilizarea platformei GurbatTM (<a href="https://gurbattm.com">gurbattm.com</a>), acceptați acești termeni și condiții. Dacă nu sunteți de acord, vă rugăm să nu utilizați platforma.</p>
+
+    <h2>2. Descrierea serviciului</h2>
+    <p>GurbatTM este o platformă gratuită de anunțuri pentru comunitatea turkmenă din afara Turkmenistanului. Platforma permite utilizatorilor să publice și să vizualizeze anunțuri pentru servicii, vânzări, transfer de bani, locuințe și altele.</p>
+
+    <h2>3. Regulile utilizatorilor</h2>
+    <p>Prin publicarea unui anunț, vă angajați să:</p>
+    <ul>
+      <li>Furnizați informații corecte și actuale</li>
+      <li>Nu publicați conținut ilegal, ofensator sau înșelător</li>
+      <li>Nu publicați anunțuri false sau spam</li>
+      <li>Nu utilizați platforma pentru activități ilegale</li>
+      <li>Respectați drepturile altor utilizatori</li>
+    </ul>
+
+    <h2>4. Conținut interzis</h2>
+    <p>Este interzisă publicarea de:</p>
+    <ul>
+      <li>Anunțuri pentru substanțe ilegale</li>
+      <li>Conținut care incită la ură sau discriminare</li>
+      <li>Servicii financiare neautorizate</li>
+      <li>Conținut care încalcă drepturile de proprietate intelectuală</li>
+    </ul>
+
+    <h2>5. Răspunderea platformei</h2>
+    <p>GurbatTM este o platformă intermediară și nu este responsabilă pentru:</p>
+    <ul>
+      <li>Conținutul anunțurilor publicate de utilizatori</li>
+      <li>Tranzacțiile efectuate între utilizatori</li>
+      <li>Acuratețea informațiilor din anunțuri</li>
+    </ul>
+
+    <h2>6. Moderarea conținutului</h2>
+    <p>Ne rezervăm dreptul de a elimina orice anunț care încalcă acești termeni, fără notificare prealabilă.</p>
+
+    <h2>7. Modificări</h2>
+    <p>Ne rezervăm dreptul de a modifica acești termeni. Modificările vor fi publicate pe această pagină.</p>
+
+    <h2>8. Contact</h2>
+    <p>Pentru întrebări: <a href="/cdn-cgi/l/email-protection#fe9d91908a9f9d8abe998b8c9c9f8a8a93d09d9193"><span class="__cf_email__" data-cfemail="9bf8f4f5effaf8efdbfceee9f9faefeff6b5f8f4f6">[email&#160;protected]</span></a></p>
+  </div>
+
+  <!-- РУССКИЙ -->
+  <div class="lang-section" id="sec-ru">
+    <p class="updated">Последнее обновление: январь 2025</p>
+
+    <h2>1. Принятие условий</h2>
+    <p>Используя платформу GurbatTM (<a href="https://gurbattm.com">gurbattm.com</a>), вы принимаете настоящие условия использования. Если вы не согласны, пожалуйста, не используйте платформу.</p>
+
+    <h2>2. Описание сервиса</h2>
+    <p>GurbatTM — бесплатная платформа объявлений для туркменской общины за рубежом. Платформа позволяет пользователям публиковать и просматривать объявления об услугах, продажах, переводах денег, жилье и другом.</p>
+
+    <h2>3. Правила пользователей</h2>
+    <p>Публикуя объявление, вы обязуетесь:</p>
+    <ul>
+      <li>Предоставлять правдивую и актуальную информацию</li>
+      <li>Не публиковать незаконный, оскорбительный или вводящий в заблуждение контент</li>
+      <li>Не публиковать фиктивные объявления или спам</li>
+      <li>Не использовать платформу в незаконных целях</li>
+      <li>Уважать права других пользователей</li>
+    </ul>
+
+    <h2>4. Запрещённый контент</h2>
+    <p>Запрещается публиковать:</p>
+    <ul>
+      <li>Объявления о незаконных веществах</li>
+      <li>Контент, разжигающий ненависть или дискриминацию</li>
+      <li>Несанкционированные финансовые услуги</li>
+      <li>Контент, нарушающий права интеллектуальной собственности</li>
+    </ul>
+
+    <h2>5. Ответственность платформы</h2>
+    <p>GurbatTM является посреднической платформой и не несёт ответственности за:</p>
+    <ul>
+      <li>Содержание объявлений, опубликованных пользователями</li>
+      <li>Сделки между пользователями</li>
+      <li>Точность информации в объявлениях</li>
+    </ul>
+
+    <h2>6. Модерация контента</h2>
+    <p>Мы оставляем за собой право удалять любые объявления, нарушающие настоящие условия, без предварительного уведомления.</p>
+
+    <h2>7. Изменения</h2>
+    <p>Мы оставляем за собой право изменять настоящие условия. Изменения будут опубликованы на этой странице.</p>
+
+    <h2>8. Контакт</h2>
+    <p>По вопросам: <a href="/cdn-cgi/l/email-protection#14777b7a607577605473616676756060793a777b79"><span class="__cf_email__" data-cfemail="50333f3e2431332410372522323124243d7e333f3d">[email&#160;protected]</span></a></p>
+  </div>
+
+  <!-- TÜRKMEN -->
+  <div class="lang-section" id="sec-tm">
+    <p class="updated">Soňky täzeleniş: 2025-nji ýylyň ýanwary</p>
+
+    <h2>1. Şertleri kabul etmek</h2>
+    <p>GurbatTM (<a href="https://gurbattm.com">gurbattm.com</a>) platformasyny ulanyp, siz bu şertleri kabul edýärsiňiz. Ylalaşmasaňyz, platformany ulanmagy bes ediň.</p>
+
+    <h2>2. Hyzmaty beýan etmek</h2>
+    <p>GurbatTM — daşary ýurtdaky türkmenler üçin mugt bildiriş platformasy. Platforma ulanyjylara hyzmatlar, satuw, pul geçirme, ýaşaýyş we başga temalar boýunça bildiriş çap etmäge we görmäge mümkinçilik berýär.</p>
+
+    <h2>3. Ulanyjylaryň düzgünleri</h2>
+    <p>Bildiriş çap edip, siz borçlanýarsyňyz:</p>
+    <ul>
+      <li>Dogry we özüne çekiji maglumat bermek</li>
+      <li>Bikanun, kemsidiji ýa-da aldawly mazmun çap etmezlik</li>
+      <li>Galp bildiriş ýa-da spam çap etmezlik</li>
+      <li>Platformany bikanun maksatlar üçin ulanmazlyk</li>
+    </ul>
+
+    <h2>4. Gadagan mazmun</h2>
+    <ul>
+      <li>Bikanun maddalar barada bildirişler</li>
+      <li>Ýigrenji ýa-da kemsitme döredýän mazmun</li>
+      <li>Rugsat berilmedik maliýe hyzmatlary</li>
+    </ul>
+
+    <h2>5. Platformanyň jogapkärçiligi</h2>
+    <p>GurbatTM araçy platforma bolup, aşakdakylara jogapkär däldir:</p>
+    <ul>
+      <li>Ulanyjylaryň çap eden bildirişleriniň mazmuny</li>
+      <li>Ulanyjylaryň arasynda geçirilen işler</li>
+      <li>Bildirişlerdäki maglumatlaryň takyklygy</li>
+    </ul>
+
+    <h2>6. Habarlaşmak</h2>
+    <p>Soraglar üçin: <a href="/cdn-cgi/l/email-protection#93f0fcfde7f2f0e7d3f4e6e1f1f2e7e7febdf0fcfe"><span class="__cf_email__" data-cfemail="7c1f1312081d1f083c1b090e1e1d080811521f1311">[email&#160;protected]</span></a></p>
+  </div>
+
+</div>
+
+<footer>
+  <a class="footer-logo" href="index.html">Gurbat<span>TM</span></a>
+  <div class="footer-links">
+    <a href="index.html">Bildirişler</a>
+    <a href="privacy.html">Politica de confidențialitate</a>
+    <a href="terms.html">Termeni și condiții</a>
+    <a href="/cdn-cgi/l/email-protection#274448495346445367405255454653534a0944484a">
+<!-- Floating Menu -->
+<div id="fab-wrap" style="position:fixed;bottom:24px;right:24px;z-index:9999;display:flex;flex-direction:column;align-items:flex-end;gap:10px;">
+  <div id="fab-menu" style="display:none;flex-direction:column;gap:8px;align-items:flex-end;">
+    <!-- <a href="account.html" style="display:flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--b);border-radius:12px;padding:10px 16px;text-decoration:none;font-size:13px;font-weight:600;color:var(--t);box-shadow:0 4px 16px rgba(10,61,46,0.15);white-space:nowrap;"><span>👤</span> Мой аккаунт</a> -->
+    <a href="contact.html" style="display:flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--b);border-radius:12px;padding:10px 16px;text-decoration:none;font-size:13px;font-weight:600;color:var(--t);box-shadow:0 4px 16px rgba(10,61,46,0.15);white-space:nowrap;"><span>✉️</span> Contact</a>
+    <a href="privacy.html" style="display:flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--b);border-radius:12px;padding:10px 16px;text-decoration:none;font-size:13px;font-weight:600;color:var(--t);box-shadow:0 4px 16px rgba(10,61,46,0.15);white-space:nowrap;"><span>🔒</span> Confidențialitate</a>
+    <a href="terms.html" style="display:flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--b);border-radius:12px;padding:10px 16px;text-decoration:none;font-size:13px;font-weight:600;color:var(--t);box-shadow:0 4px 16px rgba(10,61,46,0.15);white-space:nowrap;"><span>📋</span> Termeni</a>
+  </div>
+  <button id="fab-btn" onclick="toggleFab()" style="width:52px;height:52px;border-radius:50%;background:var(--gd);border:2px solid rgba(200,168,75,0.4);color:#fff;font-size:22px;cursor:pointer;box-shadow:0 4px 20px rgba(10,61,46,0.35);display:flex;align-items:center;justify-content:center;transition:all .2s;">☰</button>
+</div>
+<script>
+function toggleFab(){var m=document.getElementById('fab-menu'),b=document.getElementById('fab-btn'),o=m.style.display==='flex';m.style.display=o?'none':'flex';b.style.background=o?'var(--gd)':'var(--gm)';b.textContent=o?'☰':'✕';}
+document.addEventListener('click',function(e){var w=document.getElementById('fab-wrap');if(w&&!w.contains(e.target)){document.getElementById('fab-menu').style.display='none';document.getElementById('fab-btn').style.background='var(--gd)';document.getElementById('fab-btn').textContent='☰';}});
+</script>

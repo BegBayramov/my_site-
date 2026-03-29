@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — GurbatTM</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gd: #0a3d2e; --gm: #1a6b4a; --gp: #e1f5ee; --gm2: #c8e8dc;
+    --gold: #c8a84b; --cream: #faf8f3;
+    --t: #111d17; --t2: #4a6358; --t3: #8aa89a; --b: #e2ece7;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'IBM Plex Sans', sans-serif; background: var(--cream); color: var(--t); }
+
+  nav {
+    position: sticky; top: 0; z-index: 200;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 48px; height: 64px;
+    background: rgba(10,61,46,0.97); backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(200,168,75,0.2);
+  }
+  .nav-logo { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: #fff; text-decoration: none; }
+  .nav-logo span { color: var(--gold); }
+  .back-link { font-size: 13px; color: rgba(255,255,255,0.65); text-decoration: none; transition: color .2s; }
+  .back-link:hover { color: var(--gold); }
+
+  .ph { background: var(--gd); padding: 40px 48px 40px; }
+  .ph-inner { max-width: 700px; margin: 0 auto; }
+  .ph-title { font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 700; color: #fff; margin-bottom: 8px; }
+  .ph-title em { color: var(--gold); font-style: normal; }
+  .ph-sub { font-size: 13px; color: rgba(255,255,255,0.45); }
+
+  .content { max-width: 700px; margin: 0 auto; padding: 48px 48px 80px; }
+
+  .contact-card {
+    background: #fff; border: 1px solid var(--b); border-radius: 20px;
+    overflow: hidden; margin-bottom: 16px;
+  }
+  .contact-card-head {
+    background: var(--gd); padding: 20px 24px;
+    display: flex; align-items: center; gap: 14px;
+  }
+  .contact-icon {
+    width: 44px; height: 44px; border-radius: 12px;
+    background: rgba(255,255,255,0.1);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px; flex-shrink: 0;
+  }
+  .contact-card-title { font-family: 'Playfair Display', serif; font-size: 18px; color: #fff; font-weight: 600; }
+  .contact-card-sub { font-size: 12px; color: rgba(255,255,255,0.45); margin-top: 2px; }
+  .contact-card-body { padding: 20px 24px; }
+
+  .email-row {
+    display: flex; align-items: center; justify-content: space-between;
+    background: var(--gp); border: 1px solid var(--gm2);
+    border-radius: 12px; padding: 14px 18px; gap: 12px;
+  }
+  .email-text { font-size: 17px; font-weight: 600; color: var(--gd); letter-spacing: .02em; }
+  .copy-btn {
+    padding: 7px 14px; border-radius: 8px; background: var(--gm);
+    color: #fff; font-size: 12px; font-weight: 600; border: none;
+    cursor: pointer; font-family: inherit; white-space: nowrap; transition: background .15s;
+  }
+  .copy-btn:hover { background: var(--gd); }
+  .copy-btn.done { background: #2e7d52; }
+
+  .note { font-size: 13px; color: var(--t3); margin-top: 12px; line-height: 1.6; }
+
+  .links-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 24px; }
+  .link-card {
+    background: #fff; border: 1px solid var(--b); border-radius: 14px;
+    padding: 16px 18px; text-decoration: none; transition: all .15s;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .link-card:hover { border-color: var(--gm2); background: var(--gp); transform: translateY(-1px); }
+  .link-card-icon { font-size: 22px; flex-shrink: 0; }
+  .link-card-label { font-size: 12px; color: var(--t3); }
+  .link-card-title { font-size: 13px; font-weight: 600; color: var(--t); margin-top: 2px; }
+
+  footer {
+    background: var(--gd); padding: 20px 48px;
+    text-align: center; border-top: 1px solid rgba(200,168,75,0.15);
+  }
+  .footer-copy { font-size: 12px; color: rgba(255,255,255,0.25); }
+
+  @media (max-width: 768px) {
+    nav { padding: 0 16px; }
+    .ph { padding: 28px 20px 32px; }
+    .content { padding: 28px 20px 60px; }
+    .links-grid { grid-template-columns: 1fr; }
+    footer { padding: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">Gurbat<span>TM</span></a>
+  <a class="back-link" href="index.html">← Înapoi / Назад / Yza</a>
+</nav>
+
+<div class="ph">
+  <div class="ph-inner">
+    <div class="ph-title">✉️ <em>Contact</em></div>
+    <div class="ph-sub">Свяжитесь с нами / Contactați-ne / Bize ýazyň</div>
+  </div>
+</div>
+
+<div class="content">
+
+  <div class="contact-card">
+    <div class="contact-card-head">
+      <div class="contact-icon">✉️</div>
+      <div>
+        <div class="contact-card-title">Email</div>
+        <div class="contact-card-sub">Мы отвечаем в течение 24 часов / Răspundem în 24 ore</div>
+      </div>
+    </div>
+    <div class="contact-card-body">
+      <div class="email-row">
+        <div class="email-text">contact@gurbattm.com</div>
+        <button class="copy-btn" id="copyBtn" onclick="copyEmail()">📋 Копировать</button>
+      </div>
+      <p class="note">
+        По вопросам: удаление объявления, защита данных (GDPR), сотрудничество, ошибки на сайте.<br>
+        <span style="color:var(--t2);">Pentru: ștergerea anunțului, protecția datelor, erori pe site.</span>
+      </p>
+    </div>
+  </div>
+
+  <div class="links-grid">
+    <a href="privacy.html" class="link-card">
+      <div class="link-card-icon">🔒</div>
+      <div>
+        <div class="link-card-label">Документы</div>
+        <div class="link-card-title">Politica de confidențialitate</div>
+      </div>
+    </a>
+    <a href="terms.html" class="link-card">
+      <div class="link-card-icon">📋</div>
+      <div>
+        <div class="link-card-label">Документы</div>
+        <div class="link-card-title">Termeni și condiții</div>
+      </div>
+    </a>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-copy">© 2025 GurbatTM. Toate drepturile rezervate.</div>
+</footer>
+
+<script>
+function copyEmail() {
+  navigator.clipboard.writeText('contact@gurbattm.com').then(() => {
+    const btn = document.getElementById('copyBtn');
+    btn.textContent = '✓ Скопировано!';
+    btn.classList.add('done');
+    setTimeout(() => { btn.textContent = '📋 Копировать'; btn.classList.remove('done'); }, 2000);
+  });
+}
+</script>
+</body>
+</html>
