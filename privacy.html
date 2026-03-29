@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Politica de confidențialitate — GurbatTM</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gd: #0a3d2e; --gm: #1a6b4a; --gp: #e1f5ee; --gm2: #c8e8dc;
+    --gold: #c8a84b; --cream: #faf8f3;
+    --t: #111d17; --t2: #4a6358; --t3: #8aa89a; --b: #e2ece7;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'IBM Plex Sans', sans-serif; background: var(--cream); color: var(--t); }
+
+  nav {
+    position: sticky; top: 0; z-index: 200;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 48px; height: 64px;
+    background: rgba(10,61,46,0.97); backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(200,168,75,0.2);
+  }
+  .nav-logo { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: #fff; text-decoration: none; }
+  .nav-logo span { color: var(--gold); }
+  .back-link { font-size: 13px; color: rgba(255,255,255,0.65); text-decoration: none; transition: color .2s; }
+  .back-link:hover { color: var(--gold); }
+
+  .ph { background: var(--gd); padding: 40px 48px 32px; }
+  .ph-inner { max-width: 800px; margin: 0 auto; }
+  .ph-title { font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 700; color: #fff; margin-bottom: 6px; }
+  .ph-title em { color: var(--gold); font-style: normal; }
+  .ph-sub { font-size: 13px; color: rgba(255,255,255,0.45); }
+
+  .lang-tabs { display: flex; gap: 8px; padding: 20px 48px 0; max-width: 896px; margin: 0 auto; }
+  .lang-tab { padding: 8px 18px; border-radius: 8px 8px 0 0; font-size: 13px; font-weight: 600; cursor: pointer; border: none; background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.5); font-family: inherit; transition: all .2s; }
+  .lang-tab.active { background: var(--cream); color: var(--gd); }
+
+  .content { max-width: 800px; margin: 0 auto; padding: 40px 48px 80px; }
+  .lang-section { display: none; }
+  .lang-section.active { display: block; }
+
+  h2 { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 600; color: var(--gd); margin: 28px 0 10px; }
+  h2:first-child { margin-top: 0; }
+  p { font-size: 15px; line-height: 1.75; color: var(--t2); margin-bottom: 12px; }
+  ul { padding-left: 20px; margin-bottom: 12px; }
+  li { font-size: 15px; line-height: 1.75; color: var(--t2); margin-bottom: 4px; }
+  .updated { font-size: 12px; color: var(--t3); margin-bottom: 28px; padding-bottom: 20px; border-bottom: 1px solid var(--b); }
+  a { color: var(--gm); }
+
+  footer {
+    background: var(--gd); padding: 24px 48px;
+    display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+    border-top: 1px solid rgba(200,168,75,0.15);
+  }
+  .footer-logo { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; color: #fff; text-decoration: none; }
+  .footer-logo span { color: var(--gold); }
+  .footer-links { display: flex; gap: 20px; flex-wrap: wrap; }
+  .footer-links a { font-size: 12px; color: rgba(255,255,255,0.45); text-decoration: none; transition: color .2s; }
+  .footer-links a:hover { color: var(--gold); }
+  .footer-copy { font-size: 12px; color: rgba(255,255,255,0.25); width: 100%; }
+
+  @media (max-width: 768px) {
+    nav { padding: 0 16px; }
+    .ph { padding: 28px 20px 24px; }
+    .lang-tabs { padding: 16px 20px 0; }
+    .content { padding: 28px 20px 60px; }
+    footer { padding: 20px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">Gurbat<span>TM</span></a>
+  <a class="back-link" href="index.html">← Înapoi / Назад</a>
+</nav>
+
+<div class="ph">
+  <div class="ph-inner">
+    <div class="ph-title">Politica de <em>confidențialitate</em></div>
+    <div class="ph-sub">Последнее обновление / Ultima actualizare: 2025</div>
+  </div>
+  <div class="lang-tabs">
+    <button class="lang-tab active" onclick="showLang('ro')">🇷🇴 Română</button>
+    <button class="lang-tab" onclick="showLang('ru')">🇷🇺 Русский</button>
+    <button class="lang-tab" onclick="showLang('tm')">🇹🇲 Türkmen</button>
+  </div>
+</div>
+
+<div class="content">
+
+  <!-- ROMÂNĂ -->
+  <div class="lang-section active" id="sec-ro">
+    <p class="updated">Ultima actualizare: ianuarie 2025</p>
+
+    <h2>1. Cine suntem</h2>
+    <p>GurbatTM (<a href="https://gurbattm.com">gurbattm.com</a>) este o platformă de anunțuri pentru comunitatea turkmenă din afara Turkmenistanului. Operatorul datelor este GurbatTM.</p>
+
+    <h2>2. Ce date colectăm</h2>
+    <p>Când publicați un anunț pe platforma noastră, colectăm:</p>
+    <ul>
+      <li>Nume și prenume</li>
+      <li>Număr de telefon</li>
+      <li>Orașul și țara de reședință</li>
+      <li>Conturile de messenger (Telegram, WhatsApp, Viber, IMO)</li>
+      <li>Conținutul anunțului (titlu, descriere, preț, fotografii)</li>
+    </ul>
+    <p>Nu colectăm date fără consimțământul dumneavoastră explicit. Nu creăm conturi de utilizator și nu stocăm parole.</p>
+
+    <h2>3. Cum folosim datele</h2>
+    <ul>
+      <li>Pentru a afișa anunțul dumneavoastră altor utilizatori ai platformei</li>
+      <li>Pentru a permite contactul între utilizatori</li>
+      <li>Nu vindem, nu închiriem și nu transferăm datele dumneavoastră către terți</li>
+    </ul>
+
+    <h2>4. Stocarea datelor</h2>
+    <p>Datele sunt stocate în baza de date Supabase, cu servere în Uniunea Europeană. Datele sunt păstrate atât timp cât anunțul este activ pe platformă.</p>
+
+    <h2>5. Drepturile dumneavoastră (GDPR)</h2>
+    <p>Conform Regulamentului General privind Protecția Datelor (GDPR), aveți dreptul la:</p>
+    <ul>
+      <li><strong>Acces</strong> — să solicitați o copie a datelor dumneavoastră</li>
+      <li><strong>Rectificare</strong> — să corectați datele incorecte</li>
+      <li><strong>Ștergere</strong> — să solicitați eliminarea datelor dumneavoastră</li>
+      <li><strong>Opoziție</strong> — să vă opuneți prelucrării datelor</li>
+    </ul>
+    <p>Pentru a exercita aceste drepturi, contactați-ne la: <a href="mailto:contact@gurbattm.com">contact@gurbattm.com</a></p>
+
+    <h2>6. Cookie-uri</h2>
+    <p>Site-ul folosește doar cookie-uri tehnice esențiale (preferința de limbă). Nu folosim cookie-uri de urmărire sau publicitate.</p>
+
+    <h2>7. Contact</h2>
+    <p>Pentru orice întrebare legată de confidențialitate: <a href="mailto:contact@gurbattm.com">contact@gurbattm.com</a></p>
+  </div>
+
+  <!-- РУССКИЙ -->
+  <div class="lang-section" id="sec-ru">
+    <p class="updated">Последнее обновление: январь 2025</p>
+
+    <h2>1. О нас</h2>
+    <p>GurbatTM (<a href="https://gurbattm.com">gurbattm.com</a>) — платформа объявлений для туркменской общины за рубежом. Оператор данных — GurbatTM.</p>
+
+    <h2>2. Какие данные мы собираем</h2>
+    <p>При публикации объявления мы собираем:</p>
+    <ul>
+      <li>Имя и фамилию</li>
+      <li>Номер телефона</li>
+      <li>Город и страну проживания</li>
+      <li>Аккаунты мессенджеров (Telegram, WhatsApp, Viber, IMO)</li>
+      <li>Содержание объявления (заголовок, описание, цена, фотографии)</li>
+    </ul>
+    <p>Мы не собираем данные без вашего явного согласия. Мы не создаём аккаунты пользователей и не храним пароли.</p>
+
+    <h2>3. Как мы используем данные</h2>
+    <ul>
+      <li>Для отображения вашего объявления другим пользователям платформы</li>
+      <li>Для обеспечения связи между пользователями</li>
+      <li>Мы не продаём, не сдаём в аренду и не передаём ваши данные третьим лицам</li>
+    </ul>
+
+    <h2>4. Хранение данных</h2>
+    <p>Данные хранятся в базе данных Supabase на серверах в Европейском союзе. Данные хранятся до тех пор, пока объявление активно на платформе.</p>
+
+    <h2>5. Ваши права (GDPR)</h2>
+    <p>В соответствии с Общим регламентом о защите данных (GDPR) вы имеете право на:</p>
+    <ul>
+      <li><strong>Доступ</strong> — запросить копию ваших данных</li>
+      <li><strong>Исправление</strong> — исправить неверные данные</li>
+      <li><strong>Удаление</strong> — запросить удаление ваших данных</li>
+      <li><strong>Возражение</strong> — возразить против обработки данных</li>
+    </ul>
+    <p>Чтобы воспользоваться этими правами, свяжитесь с нами: <a href="mailto:contact@gurbattm.com">contact@gurbattm.com</a></p>
+
+    <h2>6. Файлы cookie</h2>
+    <p>Сайт использует только технические cookie (предпочтение языка). Мы не используем отслеживающие или рекламные cookie.</p>
+
+    <h2>7. Контакт</h2>
+    <p>По любым вопросам конфиденциальности: <a href="mailto:contact@gurbattm.com">contact@gurbattm.com</a></p>
+  </div>
+
+  <!-- TÜRKMEN -->
+  <div class="lang-section" id="sec-tm">
+    <p class="updated">Soňky täzeleniş: 2025-nji ýylyň ýanwary</p>
+
+    <h2>1. Biz hakda</h2>
+    <p>GurbatTM (<a href="https://gurbattm.com">gurbattm.com</a>) — daşary ýurtdaky türkmenler üçin bildiriş platformasy. Maglumatlaryň operatory — GurbatTM.</p>
+
+    <h2>2. Haýsy maglumatlary ýygnaýarys</h2>
+    <p>Bildiriş çap edeniňizde, aşakdaky maglumatlary ýygnaýarys:</p>
+    <ul>
+      <li>Ady we familiýasy</li>
+      <li>Telefon belgisi</li>
+      <li>Şäher we ýurt</li>
+      <li>Messenjer hasaplary (Telegram, WhatsApp, Viber, IMO)</li>
+      <li>Bildirişiň mazmuny (sözbaşy, beýan, baha, suratlar)</li>
+    </ul>
+    <p>Biz siziň açyk razylyk bermegiňiz bolmasa maglumat ýygnamaýarys. Ulanyjy hasaplary döretmeýäris we paroly saklamaýarys.</p>
+
+    <h2>3. Maglumatlary nähili ulanýarys</h2>
+    <ul>
+      <li>Bildirişiňizi beýleki ulanyjylara görkezmek üçin</li>
+      <li>Ulanyjylaryň arasynda habarlaşmaga mümkinçilik bermek üçin</li>
+      <li>Biz siziň maglumatlaryňyzy üçünji taraplara satmaýarys ýa-da bermäýris</li>
+    </ul>
+
+    <h2>4. Maglumatlary saklamak</h2>
+    <p>Maglumatlar Ýewropa Bileleşiginiň serverlerinde Supabase arkaly saklanýar. Maglumatlar bildiriş platforma aktyw bolan wagty saklanýar.</p>
+
+    <h2>5. Siziň hukuklaryňyz (GDPR)</h2>
+    <ul>
+      <li><strong>Giriş</strong> — maglumatlaryňyzyň göçürmesini islemek</li>
+      <li><strong>Düzetmek</strong> — nädogry maglumatlary düzetmek</li>
+      <li><strong>Pozmak</strong> — maglumatlaryňyzy pozmak</li>
+    </ul>
+    <p>Bu hukuklary amala aşyrmak üçin bize ýüz tutuň: <a href="mailto:contact@gurbattm.com">contact@gurbattm.com</a></p>
+
+    <h2>6. Cookie faýllary</h2>
+    <p>Saýt diňe tehniki cookie (dil saýlawy) ulanýar. Yzarlaýjy ýa-da reklama cookie ulanmaýarys.</p>
+
+    <h2>7. Habarlaşmak</h2>
+    <p>Gizlinlik boýunça soraglar üçin: <a href="mailto:contact@gurbattm.com">contact@gurbattm.com</a></p>
+  </div>
+
+</div>
+
+<footer>
+  <a class="footer-logo" href="index.html">Gurbat<span>TM</span></a>
+  <div class="footer-links">
+    <a href="index.html">Bildirişler</a>
+    <a href="privacy.html">Politica de confidențialitate</a>
+    <a href="terms.html">Termeni și condiții</a>
+    <a href="mailto:contact@gurbattm.com">Contact</a>
+  </div>
+  <div class="footer-copy">© 2025 GurbatTM. Toate drepturile rezervate.</div>
+</footer>
+
+<script>
+function showLang(lang) {
+  document.querySelectorAll('.lang-section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.lang-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('sec-' + lang).classList.add('active');
+  event.target.classList.add('active');
+}
+</script>
+</body>
+</html>
