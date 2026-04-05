@@ -1628,7 +1628,7 @@ async function initListings() {
 
   // Сохранить в кэш (без base64 фото чтобы не переполнить)
   try {
-    const toCache = rows.map(r => ({...r, photo_1: null, photo_2: null, photo_3: null}));
+    const toCache = rows.map(r => ({...r, photo_1: null, photo_2: null, photo_3: null, photo_4: null, photo_5: null, photo_6: null}));
     localStorage.setItem(CACHE_KEY, JSON.stringify(toCache));
   } catch(e) {}
 
@@ -1648,7 +1648,7 @@ function renderRows(rows, wrap) {
     const icon = categoryToIcon(r.category);
     const catKey = normalizeCategory(r.category);
     const initial = (r.name||'?').charAt(0).toUpperCase();
-    const photos = [r.photo_1,r.photo_2,r.photo_3].filter(Boolean);
+    const photos = [r.photo_1,r.photo_2,r.photo_3,r.photo_4,r.photo_5,r.photo_6].filter(Boolean);
     const photoHtml = photos.length === 1
       ? `<div class="card-photos card-photo-single"><img src="${photos[0]}"></div>`
       : photos.length > 1
