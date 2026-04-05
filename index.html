@@ -1230,9 +1230,16 @@ function showPhone(btn) {
     return;
   }
 
-  btn.textContent = phone;
+  // Добавить код страны
+  const countryCode = card.dataset.country || '';
+  const pd = (typeof PHONE_DATA !== 'undefined') ? PHONE_DATA[countryCode] : null;
+  const phoneDisplay = (pd && !phone.startsWith('+')) ? pd.code + ' ' + phone : phone;
+  const phoneTel     = phoneDisplay.replace(/\s/g, '');
+
+  btn.textContent = phoneDisplay;
   btn.style.background = 'var(--gd)';
   btn.style.letterSpacing = '0.04em';
+  btn.classList.add('revealed');
 
   btn.onclick = function() {
     window.location.href = 'tel:' + phone.replace(/\s/g, '');
