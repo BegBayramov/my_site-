@@ -1686,7 +1686,7 @@ function renderRows(rows, wrap) {
           <div class="cav" style="background:${getAvatarColor(r.name||'A')}">${initial}</div>
           <div class="ci">
             <div class="cn">${r.name || ''}</div>
-            <div class="cm">${countryName} · <span style="color:var(--t3)">${phoneDisplay}</span></div>
+            <div class="cm">${countryName} · <span style="color:var(--t3)">${r.phone || ''}</span></div>
             ${msgBadge}
           </div>
           <div class="cr"><div class="cvbadge">${badgeText}</div></div>
