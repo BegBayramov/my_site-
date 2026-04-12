@@ -1124,8 +1124,8 @@ async function submitModal() {
         <div class="cav" style="background:${avatarBg}">${initial}</div>
         <div class="ci">
           <div class="cn">${name}</div>
-          <div class="cm">${countryName} · <span style="color:var(--t3)">${phoneDisplay}</span></div>
-          ${msgBadge}
+          <div class="cm">${countryName} <!--· <span style="color:var(--t3)">${phoneDisplay}</span> --> </div>
+         <!-- ${msgBadge} -->
         </div>
         <div class="cr"><div class="cvbadge">✓ Täze</div></div>
       </div>
@@ -1746,7 +1746,7 @@ function renderRows(rows, wrap) {
             <div class="cn">${r.name || ''}</div>
             <div class="cm">${countryName}  <!-- <span style="color:var(--t3)">${r.phone || ''}</span> --> 
 			</div>
-            ${msgBadge}
+           <!-- ${msgBadge} -->
           </div>
           <div class="cr"><div class="cvbadge">${badgeText}</div></div>
         </div>
