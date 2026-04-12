@@ -486,7 +486,7 @@ function makeCallBtn(btn, textEl, phone,country) {
   
   btn.addEventListener('click', () => {
     if (btn.classList.contains('revealed')) return;
-    textEl.textContent = '📞 '+phoneDisplay;
+    textEl.textContent = '📞 '+ phoneDisplay;
     btn.classList.add('revealed');
     
     if (!btn.parentNode.querySelector('.inline-copy')) {
