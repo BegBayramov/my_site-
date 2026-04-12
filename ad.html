@@ -475,12 +475,20 @@ function render(d) {
 }
 
 // ── CALL BUTTON ────────────────────────────────────────────────
-function makeCallBtn(btn, textEl, phone) {
-  if (!btn) return;
+function makeCallBtn(btn, textEl, phone,country) {
+  if (!btn) return; 
+
+   const phoneData = PHONE_DATA[country || ''];
+  const phoneDisplay = (phoneData && phone && !phone.startsWith('+'))
+    ? phoneData.code + ' ' + phone
+    : phone;
+
+  
   btn.addEventListener('click', () => {
     if (btn.classList.contains('revealed')) return;
-    textEl.textContent = '📞 '+phone;
+    textEl.textContent = '📞 '+phoneDisplay;
     btn.classList.add('revealed');
+    
     if (!btn.parentNode.querySelector('.inline-copy')) {
       const row = document.createElement('div');
       row.className = 'inline-copy';
