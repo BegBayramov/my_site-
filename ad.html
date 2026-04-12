@@ -350,7 +350,8 @@ async function init() {
         d = {
           id: r.id, phone: r.phone||'', title: r.title||'',
           desc: r.description||'', price: r.price||'',
-          city: r.city||'', seller: r.name||'',
+          city: r.city||'', seller: r.name||'', 
+          country: r.country || '',
           flag: COUNTRY_FLAGS[r.country]||'🌍',
           caticon: CAT_ICONS[r.category] || '📦',
           cat: r.category||'',
@@ -475,7 +476,7 @@ function render(d) {
 }
 
 // ── CALL BUTTON ────────────────────────────────────────────────
-function makeCallBtn(btn, textEl, phone,country) {
+function makeCallBtn(btn, textEl, phoneDisplay) {
   if (!btn) return; 
 
    const phoneData = PHONE_DATA[country || ''];
@@ -588,13 +589,13 @@ function setAdLang(lang) {
   document.getElementById('btn-ru').classList.toggle('active', lang === 'ru');
   document.getElementById('btn-tm').classList.toggle('active', lang === 'tm');
   const t = AD_LANG[lang];
-  const e = (id) => document.getElementById(id);
+ <!-- const e = (id) => document.getElementById(id);
   if (e('ad-bc-home'))   e('ad-bc-home').textContent   = lang==='ru' ? 'Главная'                  : 'Baş sahypa';
   if (e('ad-bc-list'))   e('ad-bc-list').textContent   = lang==='ru' ? 'Объявления'               : 'Bildirişler';
   if (e('ad-ph-title'))  e('ad-ph-title').innerHTML    = lang==='ru' ? 'Объявление <em>подробно</em>' : 'Bildiriş <em>maglumaty</em>';
   if (e('ad-back'))      e('ad-back').textContent      = lang==='ru' ? '← Назад'                  : '← Bildirişlere dolan';
   if (e('ad-seller-lbl'))e('ad-seller-lbl').textContent= lang==='ru' ? 'Продавец'                 : 'Satyjy';
-  if (e('ad-desc-lbl'))  e('ad-desc-lbl').textContent  = lang==='ru' ? 'Описание'                 : 'Düşündiriş';
+  if (e('ad-desc-lbl'))  e('ad-desc-lbl').textContent  = lang==='ru' ? 'Описание'                 : 'Düşündiriş'; -->
 
   const bcHome = document.getElementById('ad-bc-home');
   if (bcHome) bcHome.textContent = t['bc-home'];
