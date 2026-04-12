@@ -346,7 +346,7 @@ async function init() {
             ? (typeof r.messengers === 'string' ? JSON.parse(r.messengers) : r.messengers)
             : (r.messenger_app ? [{id:'',label:r.messenger_app,value:r.messenger_val||'',color:'#1a6b4a',url:'',iconFill:''}] : []);
         } catch(e) {}
-        const photos = [r.photo_1, r.photo_2, r.photo_3].filter(Boolean);
+        const photos = [r.photo_1, r.photo_2, r.photo_3,r.photo_4,r.photo_5,r.photo_6,].filter(Boolean);
         d = {
           id: r.id, phone: r.phone||'', title: r.title||'',
           desc: r.description||'', price: r.price||'',
