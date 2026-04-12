@@ -497,7 +497,7 @@ function makeCallBtn(btn, textEl, phone,country) {
       requestAnimationFrame(() => row.classList.add('visible'));
       row.querySelector('.ic-btn').addEventListener('click', e => {
         e.stopPropagation();
-        navigator.clipboard.writeText(phone).catch(()=>{});
+        navigator.clipboard.writeText(phoneDisplay).catch(()=>{});
         const ib = row.querySelector('.ic-btn');
         ib.textContent=AD_LANG[localStorage.getItem('gurbat_lang')||'tm']['copy-done']; ib.classList.add('done');
         setTimeout(()=>{ ib.textContent='📋 '+AD_LANG[localStorage.getItem('gurbat_lang')||'tm']['copy-btn']; ib.classList.remove('done'); }, 2000);
